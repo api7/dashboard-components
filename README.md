@@ -8,6 +8,10 @@
 2. 以 `/packages/boilerplate` 为例，该组件完整名称为 `@api7-dashboard/boilerplate`；
 
 ```sh
+$ # 在根目录下进行构建
+
+$ yarn install && yarn build -w
+
 $ cd /packages/boilerplate
 
 $ yarn link
