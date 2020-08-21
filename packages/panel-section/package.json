@@ -1,11 +1,11 @@
 {
-  "name": "@api7-dashboard/plugin",
+  "name": "@api7-dashboard/panel-section",
   "version": "1.0.0",
-  "description": "plugin module",
+  "description": "PanelSection",
   "repository": {
     "type": "git",
     "url": "https://github.com/api7/dashboard-components",
-    "directory": "packages/plugin"
+    "directory": "packages/panel-section"
   },
   "author": "juzhiyuan",
   "license": "Apache-2.0",

@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "paths": {
       "@api7-dashboard/boilerplate": ["./packages/boilerplate/src/index.tsx"],
-      "@api7-dashboard/plugin": ["./packages/plugin/src/index.tsx"]
+      "@api7-dashboard/panel-section": ["packages/panel-section/src/index.tsx"]
     }
   },
   "include": ["**/src", ".eslintrc.js", "scripts"]
