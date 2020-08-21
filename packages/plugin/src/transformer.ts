@@ -68,7 +68,7 @@ const schemaPrometheus = (data: object) => {
  * This plugin will be enabled once we have the property.
  */
 const requestPrometheus = (data: any) => {
-  if (data.enabled) {
+  if (data && data.enabled) {
     return {};
   }
   return undefined;
