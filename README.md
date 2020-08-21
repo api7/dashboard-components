@@ -32,6 +32,10 @@ $ # 输出：success Using linked package for "@api7-dashboard/boilerplate". 表
 ```sh
 $ npm login
 
+$ PACKAGE=boilerplate yarn build
+# 或
+$ yarn build
+
 $ cd /packages/boilerplate
 
 # First time for new package
