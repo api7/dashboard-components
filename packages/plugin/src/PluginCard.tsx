@@ -9,9 +9,7 @@ interface Props extends CardProps {
 const PluginCard: React.FC<Props> = ({ name, actions }) => {
   return (
     <Card actions={actions}>
-      <Card.Meta
-        title={name}
-      />
+      <Card.Meta title={name} description="暂无简介" />
     </Card>
   );
 };

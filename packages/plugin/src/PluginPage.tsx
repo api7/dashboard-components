@@ -9,7 +9,7 @@ import PluginDrawer from './PluginDrawer';
 import { getList, fetchPluginSchema } from './service';
 import { PLUGIN_MAPPER_SOURCE } from './data';
 import { transformPlugin } from './transformer';
-import {PluginPage} from './typing.d'
+import { PluginPage } from './typing.d';
 
 type Props = {
   disabled?: boolean;

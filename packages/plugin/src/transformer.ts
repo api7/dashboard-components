@@ -1,6 +1,6 @@
 import setValue from 'set-value';
 
-type TransformerType = 'schema' | 'request' | 'response'
+type TransformerType = 'schema' | 'request' | 'response';
 
 // TODO: generate Schema Typing according to Lua
 
@@ -80,11 +80,7 @@ const responsePrometheus = () => {
   };
 };
 
-export const transformPlugin = (
-  name: string,
-  data: any,
-  type: TransformerType,
-) => {
+export const transformPlugin = (name: string, data: any, type: TransformerType) => {
   switch (name) {
     case 'response-rewrite':
       if (type === 'schema') {

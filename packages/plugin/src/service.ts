@@ -1,10 +1,9 @@
 import { JSONSchema7 } from 'json-schema';
 
-import request from 'umi-request';
-
 import { PLUGIN_MAPPER_SOURCE } from './data';
 import { transformPlugin } from './transformer';
-import {PluginPage} from './typing.d'
+import { PluginPage } from './typing.d';
+import request from './request';
 
 export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins');
 
@@ -28,4 +27,4 @@ export const getList = (plugins: PluginPage.PluginData) => {
 };
 
 export const fetchPluginSchema = (name: string): Promise<JSONSchema7> =>
-  request(`/schema/plugins/${name}`).then((data: any) => transformPlugin(name, data, 'schema'))
+  request(`/schema/plugins/${name}`).then((data: any) => transformPlugin(name, data, 'schema'));

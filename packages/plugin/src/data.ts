@@ -1,4 +1,4 @@
-import {PluginPage} from './typing.d'
+import { PluginPage } from './typing.d';
 
 export const PLUGIN_MAPPER_SOURCE: { [name: string]: PluginPage.PluginMapperItem } = {
   'limit-req': {
