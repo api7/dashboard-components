@@ -1,1 +1,1 @@
-export {default as PanelSection} from './components/PanelSection'
+export { default as PanelSection } from './components/PanelSection';
