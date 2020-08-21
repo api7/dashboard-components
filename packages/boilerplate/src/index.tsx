@@ -1,12 +1,14 @@
 import React from 'react';
-import {Button} from 'antd'
+import { Button } from 'antd';
+import { BellOutlined } from '@ant-design/icons';
 
 const App: React.FC = () => {
   return (
     <div>
-      This is a boilerplate
-      <br />
-      <Button>Button</Button>
+      示例组件：
+      <Button>
+        <BellOutlined /> Button
+      </Button>
     </div>
   );
 };
