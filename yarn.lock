@@ -3353,7 +3353,7 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/set-value@^2.0.0":
+"@types/set-value@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/set-value/-/set-value-2.0.0.tgz#63d386b103926dcf49b50e16e0f6dd49983046be"
   integrity sha512-k8dCJEC80F/mbsIOZ5Hj3YSzTVVVBwMdtP/M9Rtc2TM4F5etVd+2UG8QUiAUfbXm4fABedL2tBZnrBheY7UwpA==
