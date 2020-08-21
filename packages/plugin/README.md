@@ -1,3 +1,3 @@
-# @api7-dashboard/ui
+# @api7-dashboard/plugin
 
-常用 UI 组件
+插件模块
