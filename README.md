@@ -22,7 +22,7 @@ $ # 进入目标项目目录，如 apisix-dashboard
 
 $ cd apisix-dashboard
 
-$ yarn link "@api7-dashboard/boilerplate"
+$ yarn link @api7-dashboard/boilerplate
 
 $ # 输出：success Using linked package for "@api7-dashboard/boilerplate". 表示绑定成功，在项目内可直接使用 import XXX from "@api7-dashboard/boilerplate"
 ```
