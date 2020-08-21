@@ -1,0 +1,27 @@
+{
+  "name": "@api7-dashboard/boilerplate",
+  "version": "1.0.1",
+  "description": "Just a boilerplate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/api7/dashboard-components",
+    "directory": "packages/boilerplate"
+  },
+  "author": "juzhiyuan",
+  "license": "Apache-2.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "es",
+    "dist"
+  ],
+  "peerDependencies": {
+    "antd": "^4.5.4",
+    "react": "^16.13.1"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.2.2"
+  }
+}
