@@ -29,6 +29,6 @@
     "set-value": "^3.0.2"
   },
   "devDependencies": {
-    "@types/set-value": "^2.0.0"
+    "@types/set-value": "2.0.0"
   }
 }
