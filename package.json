@@ -8,7 +8,8 @@
     "build": "father-build && webpack --progress",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./packages && npm run lint:prettier",
     "lint:prettier": "prettier --check \"**/**.{js,jsx,tsx,ts,less,md,json}\" --end-of-line auto",
-    "prettier": "prettier --write \"**/**.{js,jsx,tsx,ts,less,md,json}\""
+    "prettier": "prettier --write \"**/**.{js,jsx,tsx,ts,less,md,json}\"",
+    "clean": "lerna clean -y"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
