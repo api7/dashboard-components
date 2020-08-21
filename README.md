@@ -1,3 +1,3 @@
-# dashboard-components
+# api7-dashboard-components
 
-用于存放 [Apache APISIX Dashboard](https://github.com/apache/apisix-dashboard) 中常用组件。
+用于存放常用组件，基于 [Ant Design Pro Components](https://github.com/ant-design/pro-components) 进行构建。
