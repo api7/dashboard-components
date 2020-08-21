@@ -10,7 +10,7 @@
 ```sh
 $ # 在根目录下进行构建
 
-$ yarn install && yarn build -w
+$ yarn install && yarn dev
 
 $ cd /packages/boilerplate
 
