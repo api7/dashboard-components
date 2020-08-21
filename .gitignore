@@ -106,3 +106,8 @@ dist
 # umi
 .umi
 .umi-production
+
+**/dist
+/.vscode
+**/**/lib/**
+**/**/es/**
