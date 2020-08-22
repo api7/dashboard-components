@@ -4,13 +4,11 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { readdirSync } = require('fs');
 
-const tailPkgs = readdirSync(path.join(__dirname, 'packages')).filter(
-  (pkg) => pkg.charAt(0) !== '.',
-);
+const tailPkgs = readdirSync(path.join(__dirname, 'packages')).filter(pkg => pkg.charAt(0) !== '.');
 
 const webPackConfigList = [];
 
-tailPkgs.forEach((pkg) => {
+tailPkgs.forEach(pkg => {
   const entry = {};
   entry[`${pkg}`] = `./packages/${pkg}/src/index.tsx`;
   entry[`${pkg}.min`] = `./packages/${pkg}/src/index.tsx`;
@@ -19,7 +17,7 @@ tailPkgs.forEach((pkg) => {
     entry,
     output: {
       filename: '[name].js',
-      library: pkg.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase()),
+      library: pkg.toLowerCase().replace(/( |^)[a-z]/g, L => L.toUpperCase()),
       libraryExport: 'default',
       path: path.resolve(__dirname, 'packages', pkg, 'dist'),
       globalObject: 'this',

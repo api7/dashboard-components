@@ -1,0 +1,36 @@
+{
+  "name": "@api7-dashboard/pluginchart",
+  "version": "1.0.1",
+  "description": "Just a pluginchart",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/api7/dashboard-components",
+    "directory": "packages/pluginchart"
+  },
+  "author": "LiteSun",
+  "license": "Apache-2.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "es",
+    "dist"
+  ],
+  "peerDependencies": {
+    "antd": "^4.5.4",
+    "react": "^16.13.1"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "@mrblenny/react-flow-chart": "^0.0.14",
+    "@rjsf/antd": "^2.3.0",
+    "@rjsf/core": "^2.3.0",
+    "json-schema": "^0.2.5",
+    "lodash": "^4.17.20",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.2"
+  }
+}
