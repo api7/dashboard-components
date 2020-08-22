@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { LinkOutlined, SettingOutlined } from '@ant-design/icons';
 import { omit } from 'lodash';
 import { JSONSchema7 } from 'json-schema';
-import { PanelSection } from '@api7-dashboard/ui';
 
+import { PanelSection } from '../../ui/src';
 import PluginCard from './PluginCard';
 import PluginDrawer from './PluginDrawer';
 import { getList, fetchPluginSchema } from './service';
@@ -35,7 +35,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
   ];
 
   useEffect(() => {
-    getList(data).then((props) => {
+    getList(data).then(props => {
       setActiveList(props.activeList);
       setInactiveList(props.inactiveList);
     });
@@ -64,7 +64,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
                 actions={[
                   <SettingOutlined
                     onClick={() => {
-                      fetchPluginSchema(name).then((schemaData) => {
+                      fetchPluginSchema(name).then(schemaData => {
                         setSchema(schemaData);
                         setTimeout(() => {
                           setPluginName(name);
@@ -90,25 +90,25 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
       <PluginDrawer
         name={pluginName}
         initialData={pluginName ? transformPlugin(pluginName, data[pluginName], 'response') : {}}
-        active={Boolean(activeList.find((item) => item.name === pluginName))}
+        active={Boolean(activeList.find(item => item.name === pluginName))}
         schema={schema!}
         disabled={disabled}
-        onActive={(name) => {
+        onActive={name => {
           // TODO: 需测试诸如 普罗米修斯 此类只需通过 {} 即可启用的插件
           setActiveList(activeList.concat({ name, ...PLUGIN_MAPPER_SOURCE[name] }));
-          setInactiveList(inactiveList.filter((item) => item.name !== name));
+          setInactiveList(inactiveList.filter(item => item.name !== name));
         }}
-        onInactive={(name) => {
+        onInactive={name => {
           if (!onChange) {
             throw new Error('请提供 onChange 方法');
           }
           onChange(omit({ ...data }, name));
           setInactiveList(inactiveList.concat({ name, ...PLUGIN_MAPPER_SOURCE[name] }));
-          setActiveList(activeList.filter((item) => item.name !== name));
+          setActiveList(activeList.filter(item => item.name !== name));
           setPluginName(undefined);
         }}
         onClose={() => setPluginName(undefined)}
-        onFinish={(value) => {
+        onFinish={value => {
           if (!pluginName) {
             return;
           }
