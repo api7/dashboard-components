@@ -1,3 +1,5 @@
+import { PanelType } from '.';
+
 export const transformer = (chart: any) => {
   const rule: any = {};
   const conf: any = {};
@@ -16,19 +18,24 @@ export const transformer = (chart: any) => {
   };
 
   const findLinkId = (type: string, nodeId: string, port?: string) => {
+    console.table({ type, nodeId, port });
     let returnId;
+
     Object.keys(links).forEach((key) => {
       const item = links[key];
+      // condition
+      if (port) {
+        if (port === item[type].portId && item[type].nodeId === nodeId) {
+          returnId = key;
+        }
+        return;
+      }
+      // plugin
       if (nodeId === item[type].nodeId) {
         returnId = key;
       }
-
-      if (port) {
-        if (port === item[type].portId) {
-          returnId = key;
-        }
-      }
     });
+
     return returnId;
   };
 
@@ -39,14 +46,15 @@ export const transformer = (chart: any) => {
     if (!link) return;
 
     const nextNodeId = links[link].to.nodeId;
+
     const nextNodeType = chart.nodes[nextNodeId].properties.customData.type;
 
-    if (nextNodeType === 0) {
+    if (nextNodeType === PanelType.Plugin) {
       rule[id] = [['', nextNodeId]];
       processRule(nextNodeId);
     }
 
-    if (nextNodeType === 1) {
+    if (nextNodeType === PanelType.Condition) {
       let truePortId;
       let falsePortId;
       const { ports } = chart.nodes[nextNodeId];
@@ -61,13 +69,21 @@ export const transformer = (chart: any) => {
           }
         }
       });
-      const nextTrueNode = links[findLinkId('from', nextNodeId, truePortId)!].to.nodeId;
-      const nextFalseNode = links[findLinkId('from', nextNodeId, falsePortId)!].to.nodeId;
+      const trueLinkId = findLinkId('from', nextNodeId, truePortId);
+      const falseLinkId = findLinkId('from', nextNodeId, falsePortId);
+      const nextTrueNode = trueLinkId ? links[trueLinkId].to.nodeId : undefined;
+      const nextFalseNode = falseLinkId ? links[falseLinkId].to.nodeId : undefined;
+
       rule[id] = [];
-      rule[id][0] = [chart.nodes[nextNodeId].properties.customData.name, nextTrueNode];
-      rule[id][1] = ['', nextFalseNode];
-      processRule(nextTrueNode);
-      processRule(nextFalseNode);
+      if (nextTrueNode) {
+        rule[id][0] = [chart.nodes[nextNodeId].properties.customData.name, nextTrueNode];
+        processRule(nextTrueNode);
+      }
+
+      if (nextFalseNode) {
+        rule[id][1] = ['', nextFalseNode];
+        processRule(nextFalseNode);
+      }
     }
   };
 
