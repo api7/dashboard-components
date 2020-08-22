@@ -2,7 +2,7 @@ import React from 'react';
 import { INodeInnerDefaultProps, IPortDefaultProps } from '@mrblenny/react-flow-chart';
 
 import { SOuter, SPortDefaultOuter } from './DrawPluginStyle';
-import { PanelType } from './Page';
+import { PanelType } from './index';
 
 export const NodeInnerCustom = ({ node }: INodeInnerDefaultProps) => {
   const { customData } = node.properties;
