@@ -15,6 +15,8 @@ import { SMessage, SContent, SSidebar } from './DrawPluginStyle';
 import { PortCustom, NodeInnerCustom } from './customConfig';
 import { fetchPluginList, fetchPluginSchema } from './service';
 
+export * from './transform';
+
 export enum PanelType {
   Plugin,
   Condition,
@@ -100,7 +102,7 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange }) => {
             {...layout}
             name="basic"
             form={form}
-            onFinish={values => {
+            onFinish={(values) => {
               const clonedChart = cloneDeep(chart);
               clonedChart.nodes[chart.selected.id!].properties.customData.name = values.condition;
               setChart(clonedChart);
@@ -174,7 +176,7 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange }) => {
               }}
             >
               {pluginNameList &&
-                pluginNameList.map(name => {
+                pluginNameList.map((name) => {
                   return (
                     <SidebarItem
                       key={name}
