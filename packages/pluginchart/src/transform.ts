@@ -18,7 +18,6 @@ export const transformer = (chart: any) => {
   };
 
   const findLinkId = (type: string, nodeId: string, port?: string) => {
-    console.table({ type, nodeId, port });
     let returnId;
 
     Object.keys(links).forEach((key) => {
