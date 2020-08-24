@@ -106,6 +106,7 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange }) => {
               const clonedChart = cloneDeep(chart);
               clonedChart.nodes[chart.selected.id!].properties.customData.name = values.condition;
               setChart(clonedChart);
+              onChange(clonedChart);
               setSelectedType(PanelType.Default);
             }}
           >
@@ -137,6 +138,7 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange }) => {
               const clonedChart = cloneDeep(chart);
               clonedChart.nodes[chart.selected.id!].properties.customData.data = formData;
               setChart(clonedChart);
+              onChange(clonedChart);
               setSelectedType(PanelType.Default);
             }}
           >
