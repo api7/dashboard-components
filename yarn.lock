@@ -8259,10 +8259,10 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-father-build@1.18.2:
-  version "1.18.2"
-  resolved "https://registry.yarnpkg.com/father-build/-/father-build-1.18.2.tgz#4850cead0f1547510c5d2d85fc7e5ab077c75998"
-  integrity sha512-5WoR0zzy8pdY1dyk/KlaFRJ2LR9Z8NiQvTwdMH061aeR3SVXDgWGjhXaSeKEFxb2k/clXB2h86mvMBF8YUvYGw==
+father-build@1.18.4:
+  version "1.18.4"
+  resolved "https://registry.yarnpkg.com/father-build/-/father-build-1.18.4.tgz#e357041101ab46e655220a35cc69ebb21ff79c63"
+  integrity sha512-FKVACH7DFt9s67pKnPGlK9WIYzBdPqf1gmFCDF7UHIVfWAbZ0VqkX1Ik69GIabaEk/6U0oWTEIchwjTZfvT0Lw==
   dependencies:
     "@babel/core" "7.4.5"
     "@babel/plugin-proposal-class-properties" "7.4.4"
