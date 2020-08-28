@@ -22,7 +22,7 @@
     "@types/react": "16.9.46",
     "@types/react-dom": "16.9.8",
     "@types/react-helmet": "6.1.0",
-    "@umijs/babel-preset-umi": "3.2.16",
+    "@umijs/babel-preset-umi": "3.2.17",
     "@umijs/fabric": "2.2.2",
     "@umijs/preset-react": "1.5.22",
     "@umijs/utils": "3.2.16",
