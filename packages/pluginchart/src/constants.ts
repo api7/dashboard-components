@@ -1,6 +1,6 @@
 export const INIT_CHART = {
-  offset: { x: 55.71, y: 21.69 },
-  scale: 0.329,
+  offset: { x: 0, y: 0 },
+  scale: 0.577,
   nodes: {},
   links: {},
   selected: {},

@@ -205,6 +205,9 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange }) => {
         <FlowChart
           chart={chart}
           callbacks={stateActionCallbacks}
+          config={{
+            zoom: { wheel: { disabled: true } },
+            }}
           Components={{
             Port: PortCustom,
             NodeInner: NodeInnerCustom,
