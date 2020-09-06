@@ -5,7 +5,7 @@ import { transformPlugin } from './transformer';
 import { PluginPage } from './typing.d';
 import request from './request';
 
-export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins').then(data => data.concat(['custom']));
+export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins');
 
 export const getList = (plugins: PluginPage.PluginData) => {
   const PLUGIN_BLOCK_LIST = Object.entries(PLUGIN_MAPPER_SOURCE)
