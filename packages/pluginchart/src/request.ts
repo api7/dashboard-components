@@ -4,7 +4,7 @@ const request = extend({
   prefix: '/apisix/admin',
   timeout: 1000,
   headers: {
-    Authorization: localStorage.getItem('GLOBAL_AUTHORIZATION') || '',
+    Authorization: localStorage.getItem('token') || '',
   },
 });
 
