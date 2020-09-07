@@ -26,6 +26,7 @@ export enum PanelType {
 type Props = {
   data: any;
   onChange(data: PluginPageType.DrawData): void;
+  readonly: boolean;
 };
 
 const { Panel } = Collapse;
@@ -40,7 +41,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange }) => {
+const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = false }) => {
   const [form] = Form.useForm();
   const [chart, setChart] = useState(cloneDeep(Object.keys(data).length ? data : INIT_CHART));
   const [schema, setSchema] = useState<JSONSchema7>();
@@ -207,14 +208,15 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange }) => {
           callbacks={stateActionCallbacks}
           config={{
             zoom: { wheel: { disabled: true } },
-            }}
+            readonly,
+          }}
           Components={{
             Port: PortCustom,
             NodeInner: NodeInnerCustom,
           }}
         />
       </SContent>
-      <SSidebar>{renderSidebar()}</SSidebar>
+      {Boolean(!readonly) && <SSidebar>{renderSidebar()}</SSidebar>}
     </Page>
   );
 };
