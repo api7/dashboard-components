@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LinkOutlined, SettingOutlined } from '@ant-design/icons';
 import { omit } from 'lodash';
 import { JSONSchema7 } from 'json-schema';
+// @ts-ignore
 import { PanelSection } from '@api7-dashboard/ui';
 
 import PluginCard from './PluginCard';
