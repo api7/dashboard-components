@@ -23,4 +23,5 @@ jobs:
         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: |
+        yarn
         yarn lerna publish --yes
