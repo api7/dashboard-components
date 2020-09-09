@@ -24,4 +24,5 @@ jobs:
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: |
         yarn
+        echo //registry.npmjs.org/:_authToken=${{ secrets.GITHUB_TOKEN }} > .npmrc
         yarn lerna publish --yes
