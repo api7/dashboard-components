@@ -17,11 +17,11 @@ jobs:
       uses: OleksiyRudenko/gha-git-credentials@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-
+      
     - name: Publish New Version and Release
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: |
-        npm install --global lerna  
-        lerna publish --yes
+        yarn install && yarn build   
+        yarn lerna publish --yes
