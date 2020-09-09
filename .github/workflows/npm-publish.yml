@@ -24,4 +24,4 @@ jobs:
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: |
         yarn install && yarn build   
-        yarn lerna publish --yes --message 'chore: release new versions'
+        yarn lerna publish from-package
