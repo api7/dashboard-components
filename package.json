@@ -45,7 +45,7 @@
     "moment-timezone": "0.5.31",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "prettier": "2.1.1",
-    "pretty-quick": "3.0.0",
+    "pretty-quick": "3.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "terser-webpack-plugin": "4.1.0",
