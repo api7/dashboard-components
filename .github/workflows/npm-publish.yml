@@ -17,11 +17,16 @@ jobs:
       uses: OleksiyRudenko/gha-git-credentials@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-      
+
     - name: Publish New Version and Release
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # NOTE: https://docs.github.com/en/actions/language-and-framework-guides/publishing-nodejs-packages#publishing-packages-to-the-npm-registry
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
       run: |
         yarn install && yarn build   
         yarn lerna publish from-package
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
