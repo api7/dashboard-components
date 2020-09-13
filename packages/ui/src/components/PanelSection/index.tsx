@@ -4,12 +4,13 @@ import { Divider } from 'antd';
 const PanelSection: React.FC<{
   title: string;
   style?: CSSProperties;
-}> = ({ title, style, children }) => {
+  id?: string;
+}> = ({ title, style, id, children }) => {
   return (
-    <>
+    <div id={id}>
       <Divider orientation="left">{title}</Divider>
       <div style={style}>{children}</div>
-    </>
+    </div>
   );
 };
 

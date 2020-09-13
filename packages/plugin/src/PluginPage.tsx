@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LinkOutlined, SettingOutlined } from '@ant-design/icons';
 import { omit } from 'lodash';
 import { JSONSchema7 } from 'json-schema';
+import { Anchor, Layout } from 'antd';
 
 // @ts-ignore
 import { PanelSection } from '@api7-dashboard/ui';
@@ -24,7 +25,10 @@ const PanelSectionStyle = {
   gridTemplateColumns: 'repeat(3, 33.333%)',
   gridRowGap: 10,
   gridColumnGap: 10,
-}
+  width: 'calc(100% - 20px)'
+};
+
+const { Sider, Content } = Layout;
 
 const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
@@ -37,41 +41,56 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
 
   return (
     <>
-      {Object.entries(allPlugins).map(([category, plugins]) => {
-        return (
-          <PanelSection
-            title={category}
-            key={category}
-            style={PanelSectionStyle}
-          >
-            {plugins.map(({ name }) => (
-              <PluginCard
-                name={name!}
-                actions={[
-                  <SettingOutlined
-                    onClick={() => {
-                      fetchPluginSchema(name!).then(schemaData => {
-                        setSchema(schemaData);
-                        setTimeout(() => {
-                          setPluginName(name);
-                        }, 300);
-                      });
-                    }}
-                  />,
-                  <LinkOutlined
-                    onClick={() =>
-                      window.open(
-                        `https://github.com/apache/incubator-apisix/blob/master/doc/plugins/${name}.md`,
-                      )
-                    }
-                  />,
-                ]}
-                key={name}
-              />
-            ))}
-          </PanelSection>
-        );
-      })}
+      <Layout>
+        <Sider theme="light">
+          <Anchor>
+            {Object.entries(allPlugins).map(([category]) => {
+              return (
+                <Anchor.Link
+                  href={`#plugin-category-${category}`}
+                  title={category}
+                  key={category}
+                />
+              );
+            })}
+          </Anchor>
+        </Sider>
+        <Content>
+          <div>
+            {Object.entries(allPlugins).map(([category, plugins]) => {
+              return (
+                <PanelSection title={category} key={category} style={PanelSectionStyle} id={`plugin-category-${category}`}>
+                  {plugins.map(({ name }) => (
+                    <PluginCard
+                      name={name!}
+                      actions={[
+                        <SettingOutlined
+                          onClick={() => {
+                            fetchPluginSchema(name!).then((schemaData) => {
+                              setSchema(schemaData);
+                              setTimeout(() => {
+                                setPluginName(name);
+                              }, 300);
+                            });
+                          }}
+                        />,
+                        <LinkOutlined
+                          onClick={() =>
+                            window.open(
+                              `https://github.com/apache/incubator-apisix/blob/master/doc/plugins/${name}.md`,
+                            )
+                          }
+                        />,
+                      ]}
+                      key={name}
+                    />
+                  ))}
+                </PanelSection>
+              );
+            })}
+          </div>
+        </Content>
+      </Layout>
       <PluginDrawer
         name={pluginName}
         initialData={pluginName ? transformPlugin(pluginName, data[pluginName], 'response') : {}}
