@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card } from 'antd';
-import { CardProps } from 'antd/lib/card';
+import type { CardProps } from 'antd/lib/card';
 
-interface Props extends CardProps {
+type Props = CardProps & {
   name: string;
 }
 
