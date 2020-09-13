@@ -2,7 +2,8 @@ name: npm-publish
 on:
   push:
     branches:
-      - master # Change this to your default branch
+      - master
+
 jobs:
   npm-publish:
     name: npm-publish
@@ -20,11 +21,11 @@ jobs:
 
     - name: Publish New Version and Release
       # NOTE: https://docs.github.com/en/actions/language-and-framework-guides/publishing-nodejs-packages#publishing-packages-to-the-npm-registry
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-      run: |
+    - run: |
         yarn install && yarn build   
         yarn lerna publish from-package
       env:
