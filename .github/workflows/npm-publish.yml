@@ -19,7 +19,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Publish New Version and Release
       # NOTE: https://docs.github.com/en/actions/language-and-framework-guides/publishing-nodejs-packages#publishing-packages-to-the-npm-registry
     - uses: actions/setup-node@v1
       with:
