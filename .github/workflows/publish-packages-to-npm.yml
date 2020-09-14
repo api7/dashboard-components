@@ -1,0 +1,23 @@
+name: publish packages to NPM
+on:
+  push:
+    branches:
+      - master
+jobs:
+  npm-publish:
+    name: npm-publish
+    runs-on: ubuntu-latest
+    steps:
+    - name: switch to target branch
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: install dependencies then build
+      run: yarn install && yarn build
+
+    - name: publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      run: yarn lerna publish from-package
