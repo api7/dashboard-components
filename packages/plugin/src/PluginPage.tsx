@@ -14,7 +14,7 @@ import { PluginPage } from './typing.d';
 import { PLUGIN_MAPPER_SOURCE } from './data';
 
 type Props = {
-  // NOTE: 从 API 中获取到的已经配置的 plugins
+  readonly?: boolean;
   initialData?: PluginPage.FinalData;
   onChange?(data: PluginPage.FinalData): void;
 };
@@ -29,7 +29,7 @@ const PanelSectionStyle = {
 
 const { Sider, Content } = Layout;
 
-const PluginPageApp: React.FC<Props> = ({ initialData = {}, onChange = () => {} }) => {
+const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange = () => {} }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
   const [allPlugins, setAllPlugins] = useState<Record<string, PluginPage.PluginMapperItem[]>>({});
@@ -80,6 +80,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, onChange = () => {} 
                       </Tooltip>,
                       <Switch
                         defaultChecked={enabled}
+                        disabled={readonly}
                         onChange={(isChecked) => {
                           // NOTE: 当前生命周期为：若关闭插件，则移除数据状态；再启用时，该插件一定是没有状态的。
                           const data = { ...initialData, [name]: initialData[name] || {} };
@@ -127,6 +128,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, onChange = () => {} 
         initialData={
           pluginName ? transformPlugin(pluginName, initialData[pluginName], 'response') : {}
         }
+        readonly={readonly}
         schema={schema!}
         onClose={() => setPluginName(undefined)}
         onFinish={(value) => {

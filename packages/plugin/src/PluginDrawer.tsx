@@ -9,13 +9,14 @@ type Props = {
   name?: string;
   initialData: any;
   schema: JSONSchema7;
+  readonly?: boolean;
   onClose(): void;
   onFinish(values: any): void;
 };
 
 const PluginForm = withTheme(AntDTheme);
 
-const PluginDrawer: React.FC<Props> = ({ name, schema, initialData, onClose, onFinish }) => {
+const PluginDrawer: React.FC<Props> = ({ name, schema, initialData, readonly, onClose, onFinish }) => {
   if (!name) {
     return null;
   }
@@ -29,7 +30,7 @@ const PluginDrawer: React.FC<Props> = ({ name, schema, initialData, onClose, onF
       destroyOnClose
       onClose={onClose}
       footer={
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        !readonly && <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button onClick={onClose}>取消</Button>
           <Button
             type="primary"
@@ -48,6 +49,7 @@ const PluginDrawer: React.FC<Props> = ({ name, schema, initialData, onClose, onF
         liveValidate
         formData={initialData}
         showErrorList={false}
+        disabled={readonly}
         // @ts-ignore
         ref={(_form: FormProps<any>) => {
           form.current = _form;
