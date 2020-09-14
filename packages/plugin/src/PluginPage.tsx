@@ -13,7 +13,7 @@ import { PluginPage } from './typing.d';
 
 type Props = {
   // NOTE: 从 API 中获取到的已经配置的 plugins
-  data?: PluginPage.FinalData;
+  initialData?: PluginPage.FinalData;
   onChange?(data: PluginPage.FinalData): void;
 };
 
@@ -27,13 +27,13 @@ const PanelSectionStyle = {
 
 const { Sider, Content } = Layout;
 
-const PluginPageApp: React.FC<Props> = ({ data = {}, onChange }) => {
+const PluginPageApp: React.FC<Props> = ({ initialData = {}, onChange }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
   const [allPlugins, setAllPlugins] = useState<Record<string, PluginPage.PluginMapperItem[]>>({});
 
   useEffect(() => {
-    getList(data).then(setAllPlugins);
+    getList(initialData).then(setAllPlugins);
   }, []);
 
   return (
@@ -109,7 +109,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, onChange }) => {
       </Layout>
       <PluginDrawer
         name={pluginName}
-        initialData={pluginName ? transformPlugin(pluginName, data[pluginName], 'response') : {}}
+        initialData={pluginName ? transformPlugin(pluginName, initialData[pluginName], 'response') : {}}
         schema={schema!}
         onClose={() => setPluginName(undefined)}
         onFinish={(value) => {
@@ -117,7 +117,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, onChange }) => {
             return;
           }
           onChange && onChange({
-            ...data,
+            ...initialData,
             [pluginName]: transformPlugin(pluginName, value, 'request'),
           });
           setPluginName(undefined);
