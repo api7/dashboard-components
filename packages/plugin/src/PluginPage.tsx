@@ -12,6 +12,7 @@ import { getList, fetchPluginSchema } from './service';
 import { transformPlugin } from './transformer';
 import { PluginPage } from './typing.d';
 import { PLUGIN_MAPPER_SOURCE } from './data';
+import CodeMirrorDrawer from './CodeMirrorDrawer';
 
 type Props = {
   readonly?: boolean;
@@ -33,6 +34,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
   const [allPlugins, setAllPlugins] = useState<Record<string, PluginPage.PluginMapperItem[]>>({});
+  const [codeMirrorCodes, setCodeMirrorCodes] = useState<object | undefined>();
 
   useEffect(() => {
     getList(initialData).then(setAllPlugins);
@@ -74,8 +76,9 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                           icon={<InfoOutlined />}
                           size="small"
                           style={{ marginRight: 10 }}
-                          // TODO
-                          onClick={() => alert('待开发')}
+                          onClick={() => {
+                            setCodeMirrorCodes(initialData[name]);
+                          }}
                         />
                       </Tooltip>,
                       <Switch
@@ -152,6 +155,11 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
           });
           setPluginName(undefined);
         }}
+      />
+      <CodeMirrorDrawer
+        visiable={Boolean(codeMirrorCodes)}
+        data={codeMirrorCodes || {}}
+        onClose={() => setCodeMirrorCodes(undefined)}
       />
     </>
   );
