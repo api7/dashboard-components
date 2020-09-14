@@ -62,22 +62,6 @@ const schemaPrometheus = (data: object) => {
   };
 };
 
-/**
- * This plugin will be enabled once we have the property.
- */
-const requestPrometheus = (data: any) => {
-  if (data && data.enabled) {
-    return {};
-  }
-  return undefined;
-};
-
-const responsePrometheus = () => {
-  return {
-    enabled: true,
-  };
-};
-
 export const transformPlugin = (name: string, data: any, type: TransformerType) => {
   switch (name) {
     case 'response-rewrite':
@@ -89,17 +73,6 @@ export const transformPlugin = (name: string, data: any, type: TransformerType) 
       }
       if (type === 'response') {
         return responseResponseRewrite(data);
-      }
-      break;
-    case 'prometheus':
-      if (type === 'schema') {
-        return schemaPrometheus(data);
-      }
-      if (type === 'request') {
-        return requestPrometheus(data);
-      }
-      if (type === 'response') {
-        return responsePrometheus();
       }
       break;
     default:
