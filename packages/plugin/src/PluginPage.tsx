@@ -25,7 +25,7 @@ const PanelSectionStyle = {
   gridTemplateColumns: 'repeat(3, 33.333%)',
   gridRowGap: 10,
   gridColumnGap: 10,
-  width: 'calc(100% - 20px)'
+  width: 'calc(100% - 40px)',
 };
 
 const { Sider, Content } = Layout;
@@ -43,7 +43,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
     <>
       <Layout>
         <Sider theme="light">
-          <Anchor>
+          <Anchor offsetTop={150}>
             {Object.entries(allPlugins).map(([category]) => {
               return (
                 <Anchor.Link
@@ -55,40 +55,43 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
             })}
           </Anchor>
         </Sider>
-        <Content>
-          <div>
-            {Object.entries(allPlugins).map(([category, plugins]) => {
-              return (
-                <PanelSection title={category} key={category} style={PanelSectionStyle} id={`plugin-category-${category}`}>
-                  {plugins.map(({ name }) => (
-                    <PluginCard
-                      name={name!}
-                      actions={[
-                        <SettingOutlined
-                          onClick={() => {
-                            fetchPluginSchema(name!).then((schemaData) => {
-                              setSchema(schemaData);
-                              setTimeout(() => {
-                                setPluginName(name);
-                              }, 300);
-                            });
-                          }}
-                        />,
-                        <LinkOutlined
-                          onClick={() =>
-                            window.open(
-                              `https://github.com/apache/incubator-apisix/blob/master/doc/plugins/${name}.md`,
-                            )
-                          }
-                        />,
-                      ]}
-                      key={name}
-                    />
-                  ))}
-                </PanelSection>
-              );
-            })}
-          </div>
+        <Content style={{ padding: '0 10px' }}>
+          {Object.entries(allPlugins).map(([category, plugins]) => {
+            return (
+              <PanelSection
+                title={category}
+                key={category}
+                style={PanelSectionStyle}
+                id={`plugin-category-${category}`}
+              >
+                {plugins.map(({ name }) => (
+                  <PluginCard
+                    name={name!}
+                    actions={[
+                      <SettingOutlined
+                        onClick={() => {
+                          fetchPluginSchema(name!).then((schemaData) => {
+                            setSchema(schemaData);
+                            setTimeout(() => {
+                              setPluginName(name);
+                            }, 300);
+                          });
+                        }}
+                      />,
+                      <LinkOutlined
+                        onClick={() =>
+                          window.open(
+                            `https://github.com/apache/incubator-apisix/blob/master/doc/plugins/${name}.md`,
+                          )
+                        }
+                      />,
+                    ]}
+                    key={name}
+                  />
+                ))}
+              </PanelSection>
+            );
+          })}
         </Content>
       </Layout>
       <PluginDrawer
