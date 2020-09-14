@@ -16,12 +16,19 @@ type Props = {
 
 const PluginForm = withTheme(AntDTheme);
 
-const PluginDrawer: React.FC<Props> = ({ name, schema, initialData, readonly, onClose, onFinish }) => {
+const PluginDrawer: React.FC<Props> = ({
+  name,
+  schema,
+  initialData,
+  readonly,
+  onClose,
+  onFinish,
+}) => {
   if (!name) {
     return null;
   }
 
-  const form = useRef<any>(null)
+  const form = useRef<any>(null);
   return (
     <Drawer
       title={`配置 ${name} 插件`}
@@ -30,18 +37,20 @@ const PluginDrawer: React.FC<Props> = ({ name, schema, initialData, readonly, on
       destroyOnClose
       onClose={onClose}
       footer={
-        !readonly && <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Button onClick={onClose}>取消</Button>
-          <Button
-            type="primary"
-            style={{ marginRight: 8, marginLeft: 8 }}
-            onClick={() => {
-              form.current?.submit();
-            }}
-          >
-            确认
-          </Button>
-        </div>
+        !readonly && (
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Button onClick={onClose}>取消</Button>
+            <Button
+              type="primary"
+              style={{ marginRight: 8, marginLeft: 8 }}
+              onClick={() => {
+                form.current?.submit();
+              }}
+            >
+              确认
+            </Button>
+          </div>
+        )
       }
     >
       <PluginForm

@@ -1,4 +1,4 @@
 export default {
   // TODO
-  "plugin.basic-auth.description": "待完善"
-}
+  'plugin.basic-auth.description': '待完善',
+};

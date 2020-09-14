@@ -9,21 +9,25 @@ export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plug
 
 export const getList = async (plugins: Record<string, object>) => {
   const names = await fetchPluginList();
-  const data: Record<string, PluginPage.PluginMapperItem[]> = {}
-  const enabledPluginNames = Object.keys(plugins)
-  names.forEach(name => {
-    const plugin = PLUGIN_MAPPER_SOURCE[name] || {}
-    const { category = "Other", hidden = false } = plugin
+  const data: Record<string, PluginPage.PluginMapperItem[]> = {};
+  const enabledPluginNames = Object.keys(plugins);
+  names.forEach((name) => {
+    const plugin = PLUGIN_MAPPER_SOURCE[name] || {};
+    const { category = 'Other', hidden = false } = plugin;
 
     if (!data[category]) {
-      data[category] = []
+      data[category] = [];
     }
 
     if (!hidden) {
-      data[category] = data[category].concat({ ...plugin, name, enabled: enabledPluginNames.includes(name) })
+      data[category] = data[category].concat({
+        ...plugin,
+        name,
+        enabled: enabledPluginNames.includes(name),
+      });
     }
-  })
-  return data
+  });
+  return data;
 };
 
 export const fetchPluginSchema = (name: string): Promise<JSONSchema7> =>

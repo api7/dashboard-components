@@ -4,5 +4,5 @@ export * from './data';
 export { PluginPage as PluginPageType } from './typing.d';
 export * from './transformer';
 
-export * as pluginLocaleZhCN from './locales/zh-CN'
-export * as pluginLocaleEnUS from './locales/en-US'
+export * as pluginLocaleZhCN from './locales/zh-CN';
+export * as pluginLocaleEnUS from './locales/en-US';

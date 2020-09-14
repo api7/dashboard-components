@@ -10,7 +10,7 @@ export declare namespace PluginPage {
 
   type PluginProps = PluginMapperItem & {
     name: string;
-  }
+  };
 
   type FinalData = Record<string, object>;
 
