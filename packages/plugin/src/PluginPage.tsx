@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { LinkOutlined, SettingOutlined, InfoOutlined } from '@ant-design/icons';
 import { JSONSchema7 } from 'json-schema';
-import { Anchor, Layout, Switch, Card, Tooltip, Button } from 'antd';
+import { Anchor, Layout, Switch, Card, Tooltip, Button, notification } from 'antd';
+import { omit } from 'lodash';
 
 // @ts-ignore
 import { PanelSection } from '@api7-dashboard/ui';
@@ -10,6 +11,7 @@ import PluginDrawer from './PluginDrawer';
 import { getList, fetchPluginSchema } from './service';
 import { transformPlugin } from './transformer';
 import { PluginPage } from './typing.d';
+import { PLUGIN_MAPPER_SOURCE } from './data';
 
 type Props = {
   // NOTE: 从 API 中获取到的已经配置的 plugins
@@ -27,7 +29,7 @@ const PanelSectionStyle = {
 
 const { Sider, Content } = Layout;
 
-const PluginPageApp: React.FC<Props> = ({ initialData = {}, onChange }) => {
+const PluginPageApp: React.FC<Props> = ({ initialData = {}, onChange = () => {} }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
   const [allPlugins, setAllPlugins] = useState<Record<string, PluginPage.PluginMapperItem[]>>({});
@@ -76,7 +78,20 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, onChange }) => {
                           onClick={() => alert('待开发')}
                         />
                       </Tooltip>,
-                      <Switch checked={enabled} onChange={() => {}} key={`plugin-card-${name}-extra-switch`} />,
+                      <Switch
+                        defaultChecked={enabled}
+                        onChange={(isChecked) => {
+                          // NOTE: 当前生命周期为：若关闭插件，则移除数据状态；再启用时，该插件一定是没有状态的。
+                          const data = { ...initialData, [name]: initialData[name] || {} };
+                          if (isChecked) {
+                            notification.info({ message: `请配置插件 ${name}` });
+                            onChange(data);
+                          } else {
+                            onChange(omit(data, [name!]));
+                          }
+                        }}
+                        key={`plugin-card-${name}-extra-switch-${enabled}`}
+                      />,
                     ]}
                     actions={[
                       <SettingOutlined
@@ -109,14 +124,27 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, onChange }) => {
       </Layout>
       <PluginDrawer
         name={pluginName}
-        initialData={pluginName ? transformPlugin(pluginName, initialData[pluginName], 'response') : {}}
+        initialData={
+          pluginName ? transformPlugin(pluginName, initialData[pluginName], 'response') : {}
+        }
         schema={schema!}
         onClose={() => setPluginName(undefined)}
         onFinish={(value) => {
           if (!pluginName) {
             return;
           }
-          onChange && onChange({
+
+          const { category = 'Other' } = PLUGIN_MAPPER_SOURCE[pluginName] || {};
+          const newAllPlugins = { ...allPlugins };
+          newAllPlugins[category] = newAllPlugins[category].map((item) => {
+            if (item.name === pluginName) {
+              return { ...item, enabled: true };
+            }
+            return item;
+          });
+          setAllPlugins(newAllPlugins);
+
+          onChange({
             ...initialData,
             [pluginName]: transformPlugin(pluginName, value, 'request'),
           });

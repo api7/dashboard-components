@@ -4,7 +4,7 @@ export declare namespace PluginPage {
   type PluginMapperItem = {
     category: PluginCategory;
     hidden?: boolean;
-    name?: string;
+    name: string;
     enabled?: boolean;
   };
 
