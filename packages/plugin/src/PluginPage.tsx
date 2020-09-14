@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { LinkOutlined, SettingOutlined } from '@ant-design/icons';
+import { LinkOutlined, SettingOutlined, InfoOutlined } from '@ant-design/icons';
 import { omit } from 'lodash';
 import { JSONSchema7 } from 'json-schema';
-import { Anchor, Layout } from 'antd';
+import { Anchor, Layout, Switch, Card, Tooltip, Button } from 'antd';
 
 // @ts-ignore
 import { PanelSection } from '@api7-dashboard/ui';
 
-import PluginCard from './PluginCard';
 import PluginDrawer from './PluginDrawer';
 import { getList, fetchPluginSchema } from './service';
 import { transformPlugin } from './transformer';
@@ -55,7 +54,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
             })}
           </Anchor>
         </Sider>
-        <Content style={{ padding: '0 10px' }}>
+        <Content style={{ padding: '0 10px', backgroundColor: '#fff' }}>
           {Object.entries(allPlugins).map(([category, plugins]) => {
             return (
               <PanelSection
@@ -65,8 +64,19 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
                 id={`plugin-category-${category}`}
               >
                 {plugins.map(({ name }) => (
-                  <PluginCard
-                    name={name!}
+                  <Card
+                    title={name}
+                    extra={[
+                      <Tooltip title="View Raw">
+                        <Button
+                          shape="circle"
+                          icon={<InfoOutlined />}
+                          size="small"
+                          style={{ marginRight: 10 }}
+                        ></Button>
+                      </Tooltip>,
+                      <Switch checked={true} onChange={() => {}} />,
+                    ]}
                     actions={[
                       <SettingOutlined
                         onClick={() => {
@@ -86,8 +96,10 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
                         }
                       />,
                     ]}
-                    key={name}
-                  />
+                  >
+                    {/* TODO: https://github.com/ant-design/pro-components/pull/379/files#diff-9b2c55deb25c2f8fec0e59c7bf59ce4aR75 */}
+                    <Card.Meta description="暂无简介" />
+                  </Card>
                 ))}
               </PanelSection>
             );
