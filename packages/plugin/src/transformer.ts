@@ -2,8 +2,6 @@ import setValue from 'set-value';
 
 type TransformerType = 'schema' | 'request' | 'response';
 
-// TODO: generate Schema Typing according to Lua
-
 const schemaResponseRewrite = (data: any) => {
   const { description } = data?.properties?.headers;
 

@@ -8,11 +8,11 @@ export declare namespace PluginPage {
     enabled?: boolean;
   };
 
-  interface PluginProps extends PluginMapperItem {
+  type PluginProps = PluginMapperItem & {
     name: string;
   }
 
-  type PluginData = { [name: string]: any };
+  type FinalData = Record<string, object>;
 
   type DrawData = { [name: string]: any };
 }

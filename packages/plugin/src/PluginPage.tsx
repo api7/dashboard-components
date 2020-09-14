@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { LinkOutlined, SettingOutlined, InfoOutlined } from '@ant-design/icons';
-import { omit } from 'lodash';
 import { JSONSchema7 } from 'json-schema';
 import { Anchor, Layout, Switch, Card, Tooltip, Button } from 'antd';
 
@@ -14,8 +13,8 @@ import { PluginPage } from './typing.d';
 
 type Props = {
   // NOTE: 从 API 中获取到的已经配置的 plugins
-  data?: PluginPage.PluginData;
-  onChange?(data: PluginPage.PluginData): void;
+  data?: PluginPage.FinalData;
+  onChange?(data: PluginPage.FinalData): void;
 };
 
 const PanelSectionStyle = {
@@ -117,10 +116,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, onChange }) => {
           if (!pluginName) {
             return;
           }
-          if (!onChange) {
-            throw new Error('请提供 onChange 方法');
-          }
-          onChange({
+          onChange && onChange({
             ...data,
             [pluginName]: transformPlugin(pluginName, value, 'request'),
           });

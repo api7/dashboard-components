@@ -1,6 +1,6 @@
 import { PluginPage } from './typing.d';
 
-export const PLUGIN_MAPPER_SOURCE: { [name: string]: PluginPage.PluginMapperItem } = {
+export const PLUGIN_MAPPER_SOURCE: Record<string, PluginPage.PluginMapperItem> = {
   'limit-req': {
     category: 'Limit',
   },
