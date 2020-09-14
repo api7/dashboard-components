@@ -7,9 +7,10 @@ import request from './request';
 
 export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins');
 
-export const getList = async () => {
+export const getList = async (plugins: Record<string, object>) => {
   const names = await fetchPluginList();
   const data: Record<string, PluginPage.PluginMapperItem[]> = {}
+  const enabledPluginNames = Object.keys(plugins)
   names.forEach(name => {
     const plugin = PLUGIN_MAPPER_SOURCE[name] || {}
     const { category = "Other", hidden = false } = plugin
@@ -19,7 +20,7 @@ export const getList = async () => {
     }
 
     if (!hidden) {
-      data[category] = data[category].concat({ ...plugin, name })
+      data[category] = data[category].concat({ ...plugin, name, enabled: enabledPluginNames.includes(name) })
     }
   })
   return data

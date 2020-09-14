@@ -35,7 +35,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
   const [allPlugins, setAllPlugins] = useState<Record<string, PluginPage.PluginMapperItem[]>>({});
 
   useEffect(() => {
-    getList().then(setAllPlugins);
+    getList(data).then(setAllPlugins);
   }, []);
 
   return (
@@ -63,19 +63,22 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
                 style={PanelSectionStyle}
                 id={`plugin-category-${category}`}
               >
-                {plugins.map(({ name }) => (
+                {plugins.map(({ name, enabled }) => (
                   <Card
+                    key={name}
                     title={name}
                     extra={[
-                      <Tooltip title="View Raw">
+                      <Tooltip title="View Raw" key={`plugin-card-${name}-extra-tooltip`}>
                         <Button
                           shape="circle"
                           icon={<InfoOutlined />}
                           size="small"
                           style={{ marginRight: 10 }}
-                        ></Button>
+                          // TODO
+                          onClick={() => alert('待开发')}
+                        />
                       </Tooltip>,
-                      <Switch checked={true} onChange={() => {}} />,
+                      <Switch checked={enabled} onChange={() => {}} key={`plugin-card-${name}-extra-switch`} />,
                     ]}
                     actions={[
                       <SettingOutlined

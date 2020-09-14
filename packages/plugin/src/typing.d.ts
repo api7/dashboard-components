@@ -5,6 +5,7 @@ export declare namespace PluginPage {
     category: PluginCategory;
     hidden?: boolean;
     name?: string;
+    enabled?: boolean;
   };
 
   interface PluginProps extends PluginMapperItem {
