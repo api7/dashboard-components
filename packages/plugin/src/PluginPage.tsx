@@ -13,7 +13,6 @@ import { transformPlugin } from './transformer';
 import { PluginPage } from './typing.d';
 
 type Props = {
-  disabled?: boolean;
   // NOTE: 从 API 中获取到的已经配置的 plugins
   data?: PluginPage.PluginData;
   onChange?(data: PluginPage.PluginData): void;
@@ -29,7 +28,7 @@ const PanelSectionStyle = {
 
 const { Sider, Content } = Layout;
 
-const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
+const PluginPageApp: React.FC<Props> = ({ data = {}, onChange }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
   const [allPlugins, setAllPlugins] = useState<Record<string, PluginPage.PluginMapperItem[]>>({});
@@ -112,20 +111,7 @@ const PluginPageApp: React.FC<Props> = ({ data = {}, disabled, onChange }) => {
       <PluginDrawer
         name={pluginName}
         initialData={pluginName ? transformPlugin(pluginName, data[pluginName], 'response') : {}}
-        active={false}
         schema={schema!}
-        disabled={disabled}
-        onActive={(name) => {
-          //
-        }}
-        onInactive={(name) => {
-          if (!onChange) {
-            throw new Error('请提供 onChange 方法');
-          }
-          onChange(omit({ ...data }, name));
-          //
-          setPluginName(undefined);
-        }}
         onClose={() => setPluginName(undefined)}
         onFinish={(value) => {
           if (!pluginName) {

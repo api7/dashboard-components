@@ -5,7 +5,7 @@ type TransformerType = 'schema' | 'request' | 'response';
 // TODO: generate Schema Typing according to Lua
 
 const schemaResponseRewrite = (data: any) => {
-  const { description } = data.properties.headers;
+  const { description } = data?.properties?.headers;
 
   setValue(data, 'properties.headers', {
     description,
@@ -31,7 +31,7 @@ const schemaResponseRewrite = (data: any) => {
  * Transform data after receiving Response
  */
 const responseResponseRewrite = (data: any) => {
-  const headers = Object.entries(data.properties.headers || {}).map(([key, value]) => {
+  const headers = Object.entries(data?.properties?.headers || {}).map(([key, value]) => {
     return {
       key,
       value,
