@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LinkOutlined, SettingOutlined, InfoOutlined } from '@ant-design/icons';
+import { SettingOutlined, InfoOutlined } from '@ant-design/icons';
 import { JSONSchema7 } from 'json-schema';
 import { Anchor, Layout, Switch, Card, Tooltip, Button, notification } from 'antd';
 import { omit } from 'lodash';
@@ -22,8 +22,8 @@ type Props = {
 
 const PanelSectionStyle = {
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 33.333%)',
-  gridRowGap: 10,
+  gridTemplateColumns: 'repeat(4, 25%)',
+  gridRowGap: 15,
   gridColumnGap: 10,
   width: 'calc(100% - 40px)',
 };
@@ -68,7 +68,15 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                 {plugins.map(({ name, enabled }) => (
                   <Card
                     key={name}
-                    title={name}
+                    title={
+                      <a
+                        href={`https://github.com/apache/incubator-apisix/blob/master/doc/plugins/${name}.md`}
+                        style={{ color: 'inherit' }}
+                        target="_blank"
+                      >
+                        {name}
+                      </a>
+                    }
                     extra={[
                       <Tooltip title="View Raw" key={`plugin-card-${name}-extra-tooltip`}>
                         <Button
@@ -107,13 +115,6 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                             }, 300);
                           });
                         }}
-                      />,
-                      <LinkOutlined
-                        onClick={() =>
-                          window.open(
-                            `https://github.com/apache/incubator-apisix/blob/master/doc/plugins/${name}.md`,
-                          )
-                        }
                       />,
                     ]}
                   >

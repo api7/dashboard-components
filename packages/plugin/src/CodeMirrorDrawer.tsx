@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, Button } from 'antd';
+import { Drawer } from 'antd';
 import CodeMirror from '@uiw/react-codemirror';
 
 type Props = {
