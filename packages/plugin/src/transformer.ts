@@ -2,10 +2,8 @@ import setValue from 'set-value';
 
 type TransformerType = 'schema' | 'request' | 'response';
 
-// TODO: generate Schema Typing according to Lua
-
 const schemaResponseRewrite = (data: any) => {
-  const { description } = data.properties.headers;
+  const { description } = data?.properties?.headers;
 
   setValue(data, 'properties.headers', {
     description,
@@ -31,7 +29,7 @@ const schemaResponseRewrite = (data: any) => {
  * Transform data after receiving Response
  */
 const responseResponseRewrite = (data: any) => {
-  const headers = Object.entries(data.properties.headers || {}).map(([key, value]) => {
+  const headers = Object.entries(data?.properties?.headers || {}).map(([key, value]) => {
     return {
       key,
       value,
@@ -64,22 +62,6 @@ const schemaPrometheus = (data: object) => {
   };
 };
 
-/**
- * This plugin will be enabled once we have the property.
- */
-const requestPrometheus = (data: any) => {
-  if (data && data.enabled) {
-    return {};
-  }
-  return undefined;
-};
-
-const responsePrometheus = () => {
-  return {
-    enabled: true,
-  };
-};
-
 export const transformPlugin = (name: string, data: any, type: TransformerType) => {
   switch (name) {
     case 'response-rewrite':
@@ -91,17 +73,6 @@ export const transformPlugin = (name: string, data: any, type: TransformerType) 
       }
       if (type === 'response') {
         return responseResponseRewrite(data);
-      }
-      break;
-    case 'prometheus':
-      if (type === 'schema') {
-        return schemaPrometheus(data);
-      }
-      if (type === 'request') {
-        return requestPrometheus(data);
-      }
-      if (type === 'response') {
-        return responsePrometheus();
       }
       break;
     default:

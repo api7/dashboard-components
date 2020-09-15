@@ -1,78 +1,54 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef } from 'react';
 import { Drawer, Button } from 'antd';
 import { withTheme, FormProps } from '@rjsf/core';
 import { JSONSchema7 } from 'json-schema';
 // @ts-ignore
 import { Theme as AntDTheme } from '@rjsf/antd';
 
-interface Props {
+type Props = {
   name?: string;
   initialData: any;
-  active?: boolean;
-  disabled?: boolean;
   schema: JSONSchema7;
-  onActive(name: string): void;
-  onInactive(name: string): void;
+  readonly?: boolean;
   onClose(): void;
   onFinish(values: any): void;
-}
+};
+
+const PluginForm = withTheme(AntDTheme);
 
 const PluginDrawer: React.FC<Props> = ({
   name,
-  active,
-  disabled,
   schema,
   initialData,
-  onActive,
-  onInactive,
+  readonly,
   onClose,
   onFinish,
 }) => {
-  const PluginForm = withTheme(AntDTheme);
-
   if (!name) {
     return null;
   }
 
-  // NOTE: 用于作为 PluginForm 的引用
-  let form: any;
-
+  const form = useRef<any>(null);
   return (
     <Drawer
       title={`配置 ${name} 插件`}
-      width={400}
+      width={500}
       visible={Boolean(name)}
       destroyOnClose
       onClose={onClose}
       footer={
-        disabled ? null : (
+        !readonly && (
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div>
-              {Boolean(active) && (
-                <Button type="primary" danger onClick={() => onInactive(name)}>
-                  禁用
-                </Button>
-              )}
-              {Boolean(!active) && (
-                <Button type="primary" onClick={() => onActive(name)}>
-                  启用
-                </Button>
-              )}
-            </div>
-            {Boolean(active) && (
-              <div>
-                <Button onClick={onClose}>取消</Button>
-                <Button
-                  type="primary"
-                  style={{ marginRight: 8, marginLeft: 8 }}
-                  onClick={() => {
-                    form.submit();
-                  }}
-                >
-                  确认
-                </Button>
-              </div>
-            )}
+            <Button onClick={onClose}>取消</Button>
+            <Button
+              type="primary"
+              style={{ marginRight: 8, marginLeft: 8 }}
+              onClick={() => {
+                form.current?.submit();
+              }}
+            >
+              确认
+            </Button>
           </div>
         )
       }
@@ -80,12 +56,12 @@ const PluginDrawer: React.FC<Props> = ({
       <PluginForm
         schema={schema}
         liveValidate
-        disabled={disabled || !active}
         formData={initialData}
         showErrorList={false}
+        disabled={readonly}
         // @ts-ignore
         ref={(_form: FormProps<any>) => {
-          form = _form;
+          form.current = _form;
         }}
         onSubmit={({ formData }) => {
           onFinish(formData);

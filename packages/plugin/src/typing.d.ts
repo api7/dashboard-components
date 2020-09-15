@@ -4,13 +4,15 @@ export declare namespace PluginPage {
   type PluginMapperItem = {
     category: PluginCategory;
     hidden?: boolean;
+    name: string;
+    enabled?: boolean;
   };
 
-  interface PluginProps extends PluginMapperItem {
+  type PluginProps = PluginMapperItem & {
     name: string;
-  }
+  };
 
-  type PluginData = { [name: string]: any };
+  type FinalData = Record<string, object>;
 
   type DrawData = { [name: string]: any };
 }
