@@ -1,6 +1,6 @@
 {
   "name": "@api7-dashboard/plugin",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "@api7-dashboard/plugin",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "@rjsf/antd": "^2.3.0",
     "@rjsf/core": "^2.3.0",
     "@uiw/react-codemirror": "^3.0.1",
+    "ajv": "^6.12.5",
     "json-schema": "^0.2.5",
     "set-value": "^3.0.2"
   },

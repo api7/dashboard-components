@@ -7,8 +7,12 @@ import request from './request';
 
 export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins');
 
+let cachedPluginNameList: string[] = []
 export const getList = async (plugins: Record<string, object>) => {
-  const names = await fetchPluginList();
+  if (!cachedPluginNameList.length) {
+    cachedPluginNameList = await fetchPluginList()
+  }
+  const names = cachedPluginNameList;
   const data: Record<string, PluginPage.PluginMapperItem[]> = {};
   const enabledPluginNames = Object.keys(plugins);
   names.forEach((name) => {
@@ -30,5 +34,10 @@ export const getList = async (plugins: Record<string, object>) => {
   return data;
 };
 
-export const fetchPluginSchema = (name: string): Promise<JSONSchema7> =>
-  request(`/schema/plugins/${name}`).then((data: any) => transformPlugin(name, data, 'schema'));
+const cachedPluginSchema: Record<string, object> = {}
+export const fetchPluginSchema = async (name: string): Promise<JSONSchema7> => {
+  if (!cachedPluginSchema[name]) {
+    cachedPluginSchema[name] = await request(`/schema/plugins/${name}`)
+  }
+  return transformPlugin(name, cachedPluginSchema[name], 'schema')
+}

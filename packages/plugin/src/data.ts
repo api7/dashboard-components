@@ -2,31 +2,42 @@ import { PluginPage } from './typing.d';
 
 export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperItem, 'name'>> = {
   'limit-req': {
-    category: 'Limit',
+    category: 'Limit traffic',
   },
   'limit-count': {
-    category: 'Limit',
+    category: 'Limit traffic',
   },
   'limit-conn': {
-    category: 'Limit',
-  },
-  'key-auth': {
-    category: 'Security',
-  },
-  'basic-auth': {
-    category: 'Security',
+    category: 'Limit traffic',
   },
   prometheus: {
-    category: 'Metric',
+    category: 'Observability',
+    noConfiguration: true
+  },
+  skywalking: {
+    category: 'Observability'
+  },
+  zipkin: {
+    category: 'Observability',
+  },
+  'request-id': {
+    category: 'Observability',
+  },
+  'key-auth': {
+    category: 'Authentication',
+  },
+  'basic-auth': {
+    category: 'Authentication',
   },
   'node-status': {
     category: 'Other',
+    noConfiguration: true
   },
   'jwt-auth': {
-    category: 'Security',
+    category: 'Authentication',
   },
-  zipkin: {
-    category: 'Metric',
+  'authz-keycloak': {
+    category: 'Authentication',
   },
   'ip-restriction': {
     category: 'Security',
@@ -42,7 +53,7 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
     category: 'Other',
   },
   'openid-connect': {
-    category: 'Security',
+    category: 'Authentication',
   },
   'proxy-rewrite': {
     category: 'Other',
@@ -80,12 +91,19 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   cors: {
     category: 'Security',
   },
+  'uri-blocker': {
+    category: 'Security',
+  },
+  'request-validator': {
+    category: 'Security',
+  },
   heartbeat: {
     category: 'Other',
     hidden: true,
   },
   'batch-requests': {
     category: 'Other',
+    noConfiguration: true
   },
   'http-logger': {
     category: 'Log',
@@ -96,4 +114,10 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   oauth: {
     category: 'Security',
   },
+  syslog: {
+    category: 'Log',
+  },
+  echo: {
+    category: 'Log',
+  }
 };
