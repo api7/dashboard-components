@@ -45,7 +45,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
 
   const resetAllPlugins = () => {
     if (!pluginName) {
-      return
+      return;
     }
     const { category = 'Other' } = PLUGIN_MAPPER_SOURCE[pluginName] || {};
     const newAllPlugins = { ...allPlugins };
@@ -129,12 +129,11 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                         disabled={readonly}
                         onChange={(isChecked) => {
                           // NOTE: 当前生命周期为：若关闭插件，则移除数据状态；再启用时，该插件一定是没有状态的。
-                          const data = { ...initialData, [name]: initialData[name] || {} };
                           if (isChecked) {
                             fetchPluginSchema(name!).then((schemaData) => {
                               const validate = ajv.validate(schemaData, initialData[name] || {});
                               if (validate) {
-                                onChange(data);
+                                onChange({ ...initialData, [name]: initialData[name] || {} });
                               } else {
                                 notification.warning({ message: `请配置插件 ${name}` });
                                 setSchema(schemaData);
@@ -144,7 +143,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                               }
                             });
                           } else {
-                            onChange(omit(data, [name!]));
+                            onChange(omit(initialData, [name!]));
                           }
                         }}
                         key={Math.random().toString(36).substring(7)}
