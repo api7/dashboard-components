@@ -39,24 +39,9 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
 
   useEffect(() => {
     getList(initialData).then(setAllPlugins);
-  }, []);
+  }, [initialData]);
 
   const ajv = new Ajv();
-
-  const resetAllPlugins = () => {
-    if (!pluginName) {
-      return;
-    }
-    const { category = 'Other' } = PLUGIN_MAPPER_SOURCE[pluginName] || {};
-    const newAllPlugins = { ...allPlugins };
-    newAllPlugins[category] = newAllPlugins[category].map((item) => {
-      if (item.name === pluginName) {
-        return { ...item, enabled: true };
-      }
-      return item;
-    });
-    setAllPlugins(newAllPlugins);
-  };
 
   return (
     <>
@@ -130,10 +115,11 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                         onChange={(isChecked) => {
                           // NOTE: 当前生命周期为：若关闭插件，则移除数据状态；再启用时，该插件一定是没有状态的。
                           if (isChecked) {
+                            const data = initialData[name] || {};
                             fetchPluginSchema(name!).then((schemaData) => {
-                              const validate = ajv.validate(schemaData, initialData[name] || {});
+                              const validate = ajv.validate(schemaData, data);
                               if (validate) {
-                                onChange({ ...initialData, [name]: initialData[name] || {} });
+                                onChange({ ...initialData, [name]: data });
                               } else {
                                 notification.warning({ message: `请配置插件 ${name}` });
                                 setSchema(schemaData);
@@ -143,7 +129,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                               }
                             });
                           } else {
-                            onChange(omit(initialData, [name!]));
+                            onChange(omit({ ...initialData }, [name!]));
                           }
                         }}
                         key={Math.random().toString(36).substring(7)}
@@ -170,7 +156,6 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
           if (!pluginName) {
             return;
           }
-          resetAllPlugins();
           onChange({
             ...initialData,
             [pluginName]: transformPlugin(pluginName, value, 'request'),

@@ -7,8 +7,12 @@ import request from './request';
 
 export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins');
 
+let cachedPluginNameList: string[] = []
 export const getList = async (plugins: Record<string, object>) => {
-  const names = await fetchPluginList();
+  if (!cachedPluginNameList.length) {
+    cachedPluginNameList = await fetchPluginList()
+  }
+  const names = cachedPluginNameList;
   const data: Record<string, PluginPage.PluginMapperItem[]> = {};
   const enabledPluginNames = Object.keys(plugins);
   names.forEach((name) => {
