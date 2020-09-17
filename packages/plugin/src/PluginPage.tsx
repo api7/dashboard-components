@@ -21,6 +21,15 @@ type Props = {
   onChange?(data: PluginPage.FinalData): void;
 };
 
+enum Category {
+  'Limit traffic',
+  'Observability',
+  'Security',
+  'Authentication',
+  'Log',
+  'Other',
+}
+
 const PanelSectionStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 33.333333%)',
@@ -60,15 +69,16 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
           </Anchor>
         </Sider>
         <Content style={{ padding: '0 10px', backgroundColor: '#fff', minHeight: 1300 }}>
-          {Object.entries(allPlugins).map(([category, plugins]) => {
-            return (
+          {Object.keys(allPlugins)
+            .sort((a, b) => Category[a] - Category[b])
+            .map((category) => (
               <PanelSection
                 title={category}
                 key={category}
                 style={PanelSectionStyle}
                 id={`plugin-category-${category}`}
               >
-                {plugins.map(({ name, enabled }) => (
+                {allPlugins[category].map(({ name, enabled }) => (
                   <Card
                     key={name}
                     title={
@@ -138,8 +148,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                   ></Card>
                 ))}
               </PanelSection>
-            );
-          })}
+            ))}
         </Content>
       </Layout>
       <PluginDrawer
