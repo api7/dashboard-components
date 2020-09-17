@@ -34,5 +34,10 @@ export const getList = async (plugins: Record<string, object>) => {
   return data;
 };
 
-export const fetchPluginSchema = (name: string): Promise<JSONSchema7> =>
-  request(`/schema/plugins/${name}`).then((data: any) => transformPlugin(name, data, 'schema'));
+const cachedPluginSchema: Record<string, object> = {}
+export const fetchPluginSchema = async (name: string): Promise<JSONSchema7> => {
+  if (!cachedPluginSchema[name]) {
+    cachedPluginSchema[name] = await request(`/schema/plugins/${name}`)
+  }
+  return transformPlugin(name, cachedPluginSchema[name], 'schema')
+}

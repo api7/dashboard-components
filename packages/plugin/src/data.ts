@@ -103,6 +103,7 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   },
   'batch-requests': {
     category: 'Other',
+    noConfiguration: true
   },
   'http-logger': {
     category: 'Log',
