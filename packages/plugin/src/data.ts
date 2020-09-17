@@ -18,9 +18,11 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   },
   prometheus: {
     category: 'Metric',
+    noConfiguration: true
   },
   'node-status': {
     category: 'Other',
+    noConfiguration: true
   },
   'jwt-auth': {
     category: 'Security',
