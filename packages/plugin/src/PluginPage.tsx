@@ -60,7 +60,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
             })}
           </Anchor>
         </Sider>
-        <Content style={{ padding: '0 10px', backgroundColor: '#fff', minHeight: 1300 }}>
+        <Content style={{ padding: '0 10px', backgroundColor: '#fff', minHeight: 1400 }}>
           {allPlugins.map((plugins) => {
             const { category } = plugins[0];
             return (
