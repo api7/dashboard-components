@@ -4512,10 +4512,10 @@
     yargs "15.4.1"
     yargs-parser "18.1.3"
 
-"@umijs/utils@3.2.21":
-  version "3.2.21"
-  resolved "https://registry.yarnpkg.com/@umijs/utils/-/utils-3.2.21.tgz#166b3485d5cbed63792dd5a23617a8f581fd1a88"
-  integrity sha512-/RB9ZBfsCFUJJMQ2rLgVWsssjikrcwK02u7gJdeNuyzAzYHUEPkyvYhgp+TXWEkkGHU/Izg5hj3hz4bZEwtLcA==
+"@umijs/utils@3.2.22":
+  version "3.2.22"
+  resolved "https://registry.yarnpkg.com/@umijs/utils/-/utils-3.2.22.tgz#0dfcf16c610947e606e71c87799c62616f085b5d"
+  integrity sha512-FhuYsgw1QYUjqm5O5RBGQj0BKyqEkgvTwgNXtK2Hwr7/P3d63svvWAEv+Vhfb75Lgwnj6bN/s0BVfv0Sp0+nOw==
   dependencies:
     "@babel/parser" "7.11.5"
     "@babel/register" "7.11.5"
