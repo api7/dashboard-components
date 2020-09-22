@@ -21,15 +21,6 @@ type Props = {
   onChange?(data: PluginPage.FinalData): void;
 };
 
-enum Category {
-  'Limit traffic',
-  'Observability',
-  'Security',
-  'Authentication',
-  'Log',
-  'Other',
-}
-
 const PanelSectionStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 33.333333%)',
@@ -43,7 +34,7 @@ const { Sider, Content } = Layout;
 const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange = () => {} }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
-  const [allPlugins, setAllPlugins] = useState<Record<string, PluginPage.PluginMapperItem[]>>({});
+  const [allPlugins, setAllPlugins] = useState<PluginPage.PluginMapperItem[][]>([]);
   const [codeMirrorCodes, setCodeMirrorCodes] = useState<object | undefined>();
 
   useEffect(() => {
@@ -57,7 +48,8 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
       <Layout>
         <Sider theme="light">
           <Anchor offsetTop={150}>
-            {Object.entries(allPlugins).map(([category]) => {
+            {allPlugins.map((plugins) => {
+              const { category } = plugins[0];
               return (
                 <Anchor.Link
                   href={`#plugin-category-${category}`}
@@ -69,16 +61,16 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
           </Anchor>
         </Sider>
         <Content style={{ padding: '0 10px', backgroundColor: '#fff', minHeight: 1300 }}>
-          {Object.keys(allPlugins)
-            .sort((a, b) => Category[a] - Category[b])
-            .map((category) => (
+          {allPlugins.map((plugins) => {
+            const { category } = plugins[0];
+            return (
               <PanelSection
                 title={category}
                 key={category}
                 style={PanelSectionStyle}
                 id={`plugin-category-${category}`}
               >
-                {allPlugins[category].map(({ name, enabled }) => (
+                {plugins.map(({ name, enabled }) => (
                   <Card
                     key={name}
                     title={
@@ -148,7 +140,8 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                   ></Card>
                 ))}
               </PanelSection>
-            ))}
+            );
+          })}
         </Content>
       </Layout>
       <PluginDrawer
