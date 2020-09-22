@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { EyeFilled, SettingFilled } from '@ant-design/icons';
 import { JSONSchema7 } from 'json-schema';
-import { Anchor, Layout, Switch, Card, Tooltip, Button, notification } from 'antd';
+import { Anchor, Layout, Switch, Card, Tooltip, Button, notification, Avatar } from 'antd';
 import { omit } from 'lodash';
 import Ajv from 'ajv';
 
@@ -21,15 +21,6 @@ type Props = {
   onChange?(data: PluginPage.FinalData): void;
 };
 
-enum Category {
-  'Limit traffic',
-  'Observability',
-  'Security',
-  'Authentication',
-  'Log',
-  'Other',
-}
-
 const PanelSectionStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 33.333333%)',
@@ -43,7 +34,7 @@ const { Sider, Content } = Layout;
 const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange = () => {} }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
-  const [allPlugins, setAllPlugins] = useState<Record<string, PluginPage.PluginMapperItem[]>>({});
+  const [allPlugins, setAllPlugins] = useState<PluginPage.PluginMapperItem[][]>([]);
   const [codeMirrorCodes, setCodeMirrorCodes] = useState<object | undefined>();
 
   useEffect(() => {
@@ -54,10 +45,22 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
 
   return (
     <>
+      <style>{`
+        .ant-avatar > img {
+          object-fit: contain;
+        }
+        .ant-avatar {
+          background-color: transparent;
+        }
+        .ant-avatar.ant-avatar-icon {
+          font-size: 32px;
+        }
+      `}</style>
       <Layout>
         <Sider theme="light">
           <Anchor offsetTop={150}>
-            {Object.entries(allPlugins).map(([category]) => {
+            {allPlugins.map((plugins) => {
+              const { category } = plugins[0];
               return (
                 <Anchor.Link
                   href={`#plugin-category-${category}`}
@@ -68,20 +71,27 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
             })}
           </Anchor>
         </Sider>
-        <Content style={{ padding: '0 10px', backgroundColor: '#fff', minHeight: 1300 }}>
-          {Object.keys(allPlugins)
-            .sort((a, b) => Category[a] - Category[b])
-            .map((category) => (
+        <Content style={{ padding: '0 10px', backgroundColor: '#fff', minHeight: 1400 }}>
+          {allPlugins.map((plugins) => {
+            const { category } = plugins[0];
+            return (
               <PanelSection
                 title={category}
                 key={category}
                 style={PanelSectionStyle}
                 id={`plugin-category-${category}`}
               >
-                {allPlugins[category].map(({ name, enabled }) => (
+                {plugins.map(({ name, enabled, avatar }) => (
                   <Card
                     key={name}
-                    title={
+                    title={[
+                      avatar && <Avatar
+                        icon={avatar}
+                        className="plugin-avatar"
+                        style={{
+                          marginRight: 5
+                        }}
+                      />,
                       <a
                         href={`https://github.com/apache/incubator-apisix/blob/master/doc/plugins/${name}.md`}
                         style={{ color: 'inherit' }}
@@ -89,7 +99,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                       >
                         {name}
                       </a>
-                    }
+                    ]}
                     style={{ height: 66 }}
                     extra={[
                       <Tooltip title="View Raw" key={`plugin-card-${name}-extra-tooltip`}>
@@ -145,10 +155,11 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                         key={Math.random().toString(36).substring(7)}
                       />,
                     ]}
-                  ></Card>
+                  />
                 ))}
               </PanelSection>
-            ))}
+            );
+          })}
         </Content>
       </Layout>
       <PluginDrawer

@@ -5,10 +5,19 @@ import { transformPlugin } from './transformer';
 import { PluginPage } from './typing.d';
 import request from './request';
 
+enum Category {
+  'Limit traffic',
+  'Observability',
+  'Security',
+  'Authentication',
+  'Log',
+  'Other',
+}
+
 export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins');
 
 let cachedPluginNameList: string[] = []
-export const getList = async (plugins: Record<string, object>) => {
+export const getList = async (plugins: Record<string, object> = {}) => {
   if (!cachedPluginNameList.length) {
     cachedPluginNameList = await fetchPluginList()
   }
@@ -31,7 +40,12 @@ export const getList = async (plugins: Record<string, object>) => {
       });
     }
   });
-  return data;
+
+  return Object.keys(data).sort((a, b) => Category[a] - Category[b]).map(category => {
+    return data[category].sort((a, b) => {
+      return (a.priority || 9999) - (b.priority || 9999)
+    })
+  });
 };
 
 const cachedPluginSchema: Record<string, object> = {}
