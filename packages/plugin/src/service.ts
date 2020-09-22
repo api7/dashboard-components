@@ -17,7 +17,7 @@ enum Category {
 export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins');
 
 let cachedPluginNameList: string[] = []
-export const getList = async (plugins: Record<string, object>) => {
+export const getList = async (plugins: Record<string, object> = {}) => {
   if (!cachedPluginNameList.length) {
     cachedPluginNameList = await fetchPluginList()
   }

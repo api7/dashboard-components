@@ -113,3 +113,4 @@ dist
 **/**/es/**
 
 .npmrc
+.DS_Store

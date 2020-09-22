@@ -10,6 +10,7 @@ export declare namespace PluginPage {
     noConfiguration?: boolean;
     // Note: 插件在前端同一分类下排序优先级，数字越小，优先级越高，默认9999。
     priority?: number;
+    avatar?: React.ReactNode;
   };
 
   type PluginProps = PluginMapperItem & {

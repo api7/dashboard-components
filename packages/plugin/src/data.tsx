@@ -1,4 +1,5 @@
-import { PluginPage } from './typing.d';
+import { PluginPage } from './typing';
+import IconFont from './IconFont'
 
 export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperItem, 'name'>> = {
   'limit-req': {
@@ -17,10 +18,12 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
     category: 'Observability',
     noConfiguration: true,
     priority: 1,
+    avatar: <IconFont type="iconPrometheus_software_logo" />
   },
   skywalking: {
     category: 'Observability',
-    priority: 2
+    priority: 2,
+    avatar: <IconFont type="iconskywalking" />
   },
   zipkin: {
     category: 'Observability',
@@ -44,11 +47,13 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   },
   'jwt-auth': {
     category: 'Authentication',
-    priority: 2
+    priority: 2,
+    avatar: <IconFont type="iconjwt-3" />
   },
   'authz-keycloak': {
     category: 'Authentication',
-    priority: 5
+    priority: 5,
+    avatar: <IconFont type="iconkeycloak_icon_32px" />
   },
   'ip-restriction': {
     category: 'Security',
@@ -66,7 +71,8 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   },
   'openid-connect': {
     category: 'Authentication',
-    priority: 4
+    priority: 4,
+    avatar: <IconFont type="iconicons8-openid" />
   },
   'proxy-rewrite': {
     category: 'Other',
@@ -105,7 +111,8 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   },
   'kafka-logger': {
     category: 'Log',
-    priority: 1
+    priority: 1,
+    avatar: <IconFont type="iconApache_kafka" />
   },
   cors: {
     category: 'Security',
