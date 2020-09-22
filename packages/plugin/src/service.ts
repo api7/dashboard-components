@@ -41,7 +41,11 @@ export const getList = async (plugins: Record<string, object>) => {
     }
   });
 
-  return Object.keys(data).sort((a, b) => Category[a] - Category[b]).map(category => data[category]);
+  return Object.keys(data).sort((a, b) => Category[a] - Category[b]).map(category => {
+    return data[category].sort((a, b) => {
+      return (a.priority || 9999) - (b.priority || 9999)
+    })
+  });
 };
 
 const cachedPluginSchema: Record<string, object> = {}
