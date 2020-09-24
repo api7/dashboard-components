@@ -24,7 +24,7 @@
     "@types/react-helmet": "6.1.0",
     "@umijs/babel-preset-umi": "3.2.21",
     "@umijs/fabric": "2.2.2",
-    "@umijs/preset-react": "1.6.7",
+    "@umijs/preset-react": "1.6.8",
     "@umijs/utils": "3.2.22",
     "antd": "4.6.5",
     "babel-loader": "8.1.0",
