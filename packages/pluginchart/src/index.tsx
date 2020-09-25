@@ -2,15 +2,16 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { cloneDeep } from 'lodash';
 import { FlowChart, IFlowChartCallbacks } from '@mrblenny/react-flow-chart';
 import * as actions from '@mrblenny/react-flow-chart/src/container/actions';
-import { Form, Input, Button, Collapse, Divider } from 'antd';
+import { Form, Input, Button, Collapse, Divider, Card, Select } from 'antd';
 import { withTheme } from '@rjsf/core';
+import { PLUGIN_MAPPER_SOURCE, PluginPageType, PluginPage } from '@api7-dashboard/plugin';
+
 // @ts-ignore
 import { Theme as AntDTheme } from '@rjsf/antd';
 import { JSONSchema7 } from 'json-schema';
 
-import { PluginPageType } from '../../plugin/src';
 import { Page, SidebarItem } from './components';
-import { INIT_CHART, PLUGINS_PORTS, CONDITION_PORTS } from './constants';
+import { INIT_CHART, PLUGINS_PORTS, CONDITION_PORTS, CATEGOTY_OPTIONS } from './constants';
 import { SMessage, SContent, SSidebar } from './DrawPluginStyle';
 import { PortCustom, NodeInnerCustom } from './customConfig';
 import { fetchPluginList, fetchPluginSchema } from './service';
@@ -46,7 +47,9 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = fals
   const [chart, setChart] = useState(cloneDeep(Object.keys(data).length ? data : INIT_CHART));
   const [schema, setSchema] = useState<JSONSchema7>();
   const [selectedType, setSelectedType] = useState<PanelType>(PanelType.Default);
-  const [pluginNameList, setPluginNameList] = useState<string[]>([]);
+  const [pluginCategoryList, setPluginCategoryList] = useState({});
+  const [pluginCategory, setPluginCategory] = useState('All');
+  const [showList, setShowList] = useState<string[]>();
 
   const getCustomDataById = (id = chart.selected.id) => {
     if (!id || !chart.nodes[id].properties) {
@@ -90,7 +93,32 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = fals
 
   useEffect(() => {
     fetchPluginList().then((r: string[]) => {
-      setPluginNameList(r.sort());
+      const data: Record<string, PluginPageType.PluginMapperItem[]> = {};
+      const list = {
+        All: r,
+      };
+      r.forEach((name) => {
+        const plugin = PLUGIN_MAPPER_SOURCE[name] || {};
+        const { category = 'Other', hidden = false } = plugin;
+        if (!data[category]) {
+          data[category] = [];
+        }
+        if (!hidden) {
+          data[category] = data[category].concat({
+            ...plugin,
+            name,
+          });
+        }
+      });
+      Object.keys(data).map((category) => {
+        list[category] = data[category]
+          .sort((a, b) => {
+            return (a.priority || 9999) - (b.priority || 9999);
+          })
+          .map((item) => item.name);
+      });
+      setShowList(r.sort());
+      setPluginCategoryList(list);
     });
   }, []);
 
@@ -167,36 +195,52 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = fals
             },
           }}
         />
-
-        <Collapse>
-          <Panel header="选择插件" key="1">
-            <div
-              style={{
-                overflowY: 'scroll',
-                height: '300px',
-                display: 'flex',
-                flexWrap: 'wrap',
-              }}
-            >
-              {pluginNameList &&
-                pluginNameList.map((name) => {
-                  return (
-                    <SidebarItem
-                      key={name}
-                      type={name}
-                      ports={PLUGINS_PORTS}
-                      properties={{
-                        customData: {
-                          type: PanelType.Plugin,
-                          name,
-                        },
-                      }}
-                    />
-                  );
-                })}
-            </div>
-          </Panel>
-        </Collapse>
+        <Divider orientation="left">插件</Divider>
+        <Select
+          showSearch
+          placeholder="插件分类"
+          optionFilterProp="children"
+          defaultValue={pluginCategory}
+          onChange={(values) => {
+            setPluginCategory(values);
+            setShowList(pluginCategoryList[values]);
+          }}
+          filterOption={(input, option) =>
+            option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+          }
+        >
+          {CATEGOTY_OPTIONS.map((item) => (
+            <Select.Option value={item}>{item}</Select.Option>
+          ))}
+        </Select>
+        <Card size="small" title={pluginCategory} style={{ height: 'unset' }}>
+          <div
+            style={{
+              overflowY: 'scroll',
+              height: '500px',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignContent: 'flex-start',
+            }}
+          >
+            {showList &&
+              showList.map((name) => {
+                return (
+                  <SidebarItem
+                    key={name}
+                    type={name}
+                    ports={PLUGINS_PORTS}
+                    properties={{
+                      customData: {
+                        type: PanelType.Plugin,
+                        name,
+                      },
+                    }}
+                  />
+                );
+              })}
+          </div>
+        </Card>
       </SSidebar>
     );
   };
