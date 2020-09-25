@@ -1,6 +1,6 @@
 {
   "name": "@api7-dashboard/pluginchart",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Just a pluginchart",
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
+    "@api7-dashboard/plugin": "^1.0.6",
     "@mrblenny/react-flow-chart": "^0.0.14",
     "@rjsf/antd": "^2.3.0",
     "@rjsf/core": "^2.3.0",
