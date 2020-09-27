@@ -15,6 +15,11 @@ jobs:
 
     - name: install dependencies then build
       run: yarn install && yarn build
+    
+    - name: Configure git credentials
+      uses: OleksiyRudenko/gha-git-credentials@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: publish
       env:
