@@ -156,6 +156,15 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = fals
       );
     }
     if (selectedType === PanelType.Plugin && schema) {
+      const { name } = getCustomDataById();
+      if (PLUGIN_MAPPER_SOURCE[name]?.noConfiguration) {
+        return (
+          <div style={{ width: '100%', marginTop: '150px', textAlign: 'center' }}>
+            {name} 插件不需要配置
+          </div>
+        );
+      }
+
       return (
         <SMessage style={{ overflow: 'scroll' }}>
           <PluginForm
