@@ -160,7 +160,7 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = fals
       if (PLUGIN_MAPPER_SOURCE[name]?.noConfiguration) {
         return (
           <div style={{ width: '100%', marginTop: '150px', textAlign: 'center' }}>
-            {name} 插件不需要配置
+            插件 {name} 不需要配置
           </div>
         );
       }
