@@ -20,4 +20,4 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      run: yarn lerna publish from-package
+      run: yarn lerna publish from-package --yes
