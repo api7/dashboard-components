@@ -37,7 +37,7 @@
     "jsdom": "16.4.0",
     "jsdom-global": "3.0.2",
     "lerna": "3.22.1",
-    "less-loader": "7.0.1",
+    "less-loader": "7.0.2",
     "lint-staged": "10.4.0",
     "lodash": "4.17.20",
     "mini-css-extract-plugin": "0.12.0",
