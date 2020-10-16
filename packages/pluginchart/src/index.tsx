@@ -82,7 +82,7 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = fals
         const { type, name } = getCustomDataById(args.nodeId);
         setSelectedType(type);
         if (type === PanelType.Plugin && name) {
-          fetchPluginSchema(name).then(setSchema);
+          fetchPluginSchema(name).then(({ data }) => setSchema(data));
         }
       }
       onChange(newChart);
@@ -92,12 +92,12 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = fals
   }, {}) as IFlowChartCallbacks;
 
   useEffect(() => {
-    fetchPluginList().then((r: string[]) => {
+    fetchPluginList().then((r) => {
       const data: Record<string, PluginPageType.PluginMapperItem[]> = {};
       const list = {
-        All: r,
+        All: r.data,
       };
-      r.forEach((name) => {
+      r.data.forEach((name) => {
         const plugin = PLUGIN_MAPPER_SOURCE[name] || {};
         const { category = 'Other', hidden = false } = plugin;
         if (!data[category]) {
@@ -117,7 +117,7 @@ const SelectedSidebar: React.FC<Props> = ({ data = {}, onChange, readonly = fals
           })
           .map((item) => item.name);
       });
-      setShowList(r.sort());
+      setShowList(r.data.sort());
       setPluginCategoryList(list);
     });
   }, []);
