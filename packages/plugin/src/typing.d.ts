@@ -1,6 +1,12 @@
 export declare namespace PluginPage {
   // NOTE: 需要与 PluginPage 文件中的 Category 枚举值同步
-  type PluginCategory = 'Security' | 'Limit traffic' | 'Log' | 'Observability' | 'Other' | 'Authentication';
+  type PluginCategory =
+    | 'Security'
+    | 'Limit traffic'
+    | 'Log'
+    | 'Observability'
+    | 'Other'
+    | 'Authentication';
 
   type PluginMapperItem = {
     category: PluginCategory;
@@ -20,4 +26,11 @@ export declare namespace PluginPage {
   type FinalData = Record<string, object>;
 
   type DrawData = { [name: string]: any };
+
+  type Response = {
+    code: number;
+    data: string[];
+    message: string;
+    request_id: string;
+  };
 }

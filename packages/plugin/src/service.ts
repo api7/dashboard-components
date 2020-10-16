@@ -14,12 +14,12 @@ enum Category {
   'Other',
 }
 
-export const fetchPluginList = (): Promise<string[]> => request<string[]>('/plugins');
+export const fetchPluginList = () => request<PluginPage.Response>('/plugins');
 
-let cachedPluginNameList: string[] = []
+let cachedPluginNameList: string[] = [];
 export const getList = async (plugins: Record<string, object> = {}) => {
   if (!cachedPluginNameList.length) {
-    cachedPluginNameList = await fetchPluginList()
+    cachedPluginNameList = (await fetchPluginList()).data;
   }
   const names = cachedPluginNameList;
   const data: Record<string, PluginPage.PluginMapperItem[]> = {};
@@ -41,17 +41,19 @@ export const getList = async (plugins: Record<string, object> = {}) => {
     }
   });
 
-  return Object.keys(data).sort((a, b) => Category[a] - Category[b]).map(category => {
-    return data[category].sort((a, b) => {
-      return (a.priority || 9999) - (b.priority || 9999)
-    })
-  });
+  return Object.keys(data)
+    .sort((a, b) => Category[a] - Category[b])
+    .map((category) => {
+      return data[category].sort((a, b) => {
+        return (a.priority || 9999) - (b.priority || 9999);
+      });
+    });
 };
 
-const cachedPluginSchema: Record<string, object> = {}
+const cachedPluginSchema: Record<string, object> = {};
 export const fetchPluginSchema = async (name: string): Promise<JSONSchema7> => {
   if (!cachedPluginSchema[name]) {
-    cachedPluginSchema[name] = await request(`/schema/plugins/${name}`)
+    cachedPluginSchema[name] = (await request(`/schema/plugins/${name}`)).data;
   }
-  return transformPlugin(name, cachedPluginSchema[name], 'schema')
-}
+  return transformPlugin(name, cachedPluginSchema[name], 'schema');
+};
