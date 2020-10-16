@@ -13,11 +13,11 @@
     "clean": "lerna clean -y"
   },
   "devDependencies": {
-    "@babel/core": "7.12.0",
-    "@babel/plugin-proposal-object-rest-spread": "7.11.0",
-    "@babel/preset-env": "7.12.0",
-    "@babel/preset-react": "7.10.4",
-    "@babel/preset-typescript": "7.12.0",
+    "@babel/core": "7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "7.12.1",
+    "@babel/preset-env": "7.12.1",
+    "@babel/preset-react": "7.12.1",
+    "@babel/preset-typescript": "7.12.1",
     "@types/lodash": "4.14.162",
     "@types/react": "16.9.52",
     "@types/react-dom": "16.9.8",
