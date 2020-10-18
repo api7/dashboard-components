@@ -4953,10 +4953,10 @@
   resolved "https://registry.yarnpkg.com/@umijs/plugin-initial-state/-/plugin-initial-state-2.2.1.tgz#cd7592aa90b6b369bd0df297254320088397ff67"
   integrity sha512-qDtWguduISeG+EObgKbImuRX3FyLrNcj3yQtY24HdYkDTGmtsmA4ZKB7Q/N+V/O0Yxep06bCotTK3jFV9KXuEA==
 
-"@umijs/plugin-layout@0.12.3":
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-layout/-/plugin-layout-0.12.3.tgz#a30a70f043f231b822dcb583a32b1ab25cc4972e"
-  integrity sha512-ET8vF7hpSZXyoHMSnHoOSXQRIjbg8ayTkuMaFjkalivFt6Co//4n+450bU5Pxcc+8preX+brPfyam8XO9T9N9w==
+"@umijs/plugin-layout@0.12.4":
+  version "0.12.4"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-layout/-/plugin-layout-0.12.4.tgz#8a307039b3b692eb55629283d6c6bc43c69da863"
+  integrity sha512-I4NwcmEYTVdRzjG+/ZhBAihSOwyE7ngbX8bB2NdaQGDm6h0fdZg3lX/eoPsnxpsFZR2dUKHrRq5NjmPNPhbptg==
   dependencies:
     "@umijs/route-utils" "^1.0.7"
     antd "^4.1.2"
@@ -5034,10 +5034,10 @@
     umi-webpack-bundle-analyzer "3.6.0"
     zlib "1.0.5"
 
-"@umijs/preset-react@1.6.12":
-  version "1.6.12"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.12.tgz#f66faf8fb9c5e5c36f9fa48af29b3277fe204a2b"
-  integrity sha512-TFs/AAwohaZdfiS0LxzQLWxeg4bBLriB7QnkXFtcTm445yW8RpY2TXVCKG1a2vnENQmG+q4DBaPJwGeMJeVtVw==
+"@umijs/preset-react@1.6.13":
+  version "1.6.13"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.13.tgz#b2f09f81ceb4045f27e47e3b6a71f6fd60bc206e"
+  integrity sha512-+0SerrWFjDorlNSbxmLx/QWEnDS9ayvbKIyqT4OM2/i5kYsnpuzNWdImzMkrgRZfezjgO1+FUbMsUFAeQn23xA==
   dependencies:
     "@umijs/plugin-access" "2.3.1"
     "@umijs/plugin-analytics" "0.2.2"
@@ -5046,7 +5046,7 @@
     "@umijs/plugin-dva" "0.9.1"
     "@umijs/plugin-helmet" "1.1.1"
     "@umijs/plugin-initial-state" "2.2.1"
-    "@umijs/plugin-layout" "0.12.3"
+    "@umijs/plugin-layout" "0.12.4"
     "@umijs/plugin-locale" "0.10.4"
     "@umijs/plugin-model" "2.5.5"
     "@umijs/plugin-request" "2.5.0"
