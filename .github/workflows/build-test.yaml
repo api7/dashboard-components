@@ -9,8 +9,8 @@ on:
       - master
 
 jobs:
-  npm-publish:
-    name: npm-publish
+  building:
+    name: building
     runs-on: ubuntu-latest
     steps:
     - name: switch to target branch
