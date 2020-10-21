@@ -4473,14 +4473,6 @@
     "@babel/traverse" "7.10.4"
     "@umijs/utils" "3.2.16"
 
-"@umijs/babel-plugin-auto-css-modules@3.2.21":
-  version "3.2.21"
-  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-auto-css-modules/-/babel-plugin-auto-css-modules-3.2.21.tgz#3db9a3b8048ed8f2e25980629f89d55925a93b65"
-  integrity sha512-YgBoKidBdCwqUvIBCniCAw0C08lTUPtHEm/3Yal88kxGcTI1PgtH7BsGR3cvm17IJz8Nmr4Vf9BRfcFrTDEXow==
-  dependencies:
-    "@babel/traverse" "7.10.4"
-    "@umijs/utils" "3.2.21"
-
 "@umijs/babel-plugin-auto-css-modules@3.2.24":
   version "3.2.24"
   resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-auto-css-modules/-/babel-plugin-auto-css-modules-3.2.24.tgz#13d25c1d7402fe529d92a77e76da5297a3c85829"
@@ -4497,14 +4489,6 @@
     "@babel/traverse" "7.10.4"
     "@umijs/utils" "3.2.16"
 
-"@umijs/babel-plugin-import-to-await-require@3.2.21":
-  version "3.2.21"
-  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-import-to-await-require/-/babel-plugin-import-to-await-require-3.2.21.tgz#284edae97e56c0adbfa9a28b5652725bcd0f477a"
-  integrity sha512-3SxkiMrFUBiUsAgsY1yT+0hA5IBDNv2ssfWqcApzk+BB2wu3C8LqhXyfSRId2JSeJGLqKZqdPy7AI3oGhWFW8Q==
-  dependencies:
-    "@babel/traverse" "7.10.4"
-    "@umijs/utils" "3.2.21"
-
 "@umijs/babel-plugin-import-to-await-require@3.2.24":
   version "3.2.24"
   resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-import-to-await-require/-/babel-plugin-import-to-await-require-3.2.24.tgz#3c5e6ff41b4c38cd9049f2cdbb06152823e27f1e"
@@ -4519,14 +4503,6 @@
   integrity sha512-MZYfuIrmgOw5ZD0FZqJvVkvk5QyFOoMQJOh8pNNMtB4BreaFWDXWqY6X0jbNZM/9cbToHCE7rFAuarAvdBx6oQ==
   dependencies:
     "@umijs/utils" "3.2.16"
-    core-js "3.6.5"
-
-"@umijs/babel-plugin-lock-core-js-3@3.2.21":
-  version "3.2.21"
-  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-lock-core-js-3/-/babel-plugin-lock-core-js-3-3.2.21.tgz#6ae60318bfab9ecf11ba24ceb4bf5d26f15210e5"
-  integrity sha512-oku8G83QZwvQUtZijB7y692cyyS6qzf2M0CKhML0jw4CuuZCaDpL7o2B6gDXQFtxUdE/Fz7mcabouXh+YqfyZQ==
-  dependencies:
-    "@umijs/utils" "3.2.21"
     core-js "3.6.5"
 
 "@umijs/babel-plugin-lock-core-js-3@3.2.24":
@@ -4562,38 +4538,6 @@
     "@umijs/babel-plugin-auto-css-modules" "3.2.16"
     "@umijs/babel-plugin-import-to-await-require" "3.2.16"
     "@umijs/babel-plugin-lock-core-js-3" "3.2.16"
-    babel-plugin-dynamic-import-node "2.3.3"
-    babel-plugin-import "^1.13.0"
-    babel-plugin-named-asset-import "0.3.6"
-    babel-plugin-react-require "3.1.3"
-    babel-plugin-transform-react-remove-prop-types "0.4.24"
-    babel-plugin-transform-typescript-metadata "0.3.0"
-
-"@umijs/babel-preset-umi@3.2.21":
-  version "3.2.21"
-  resolved "https://registry.yarnpkg.com/@umijs/babel-preset-umi/-/babel-preset-umi-3.2.21.tgz#deb62f5eb348f07c3d5fd90edaee38d956e00482"
-  integrity sha512-gquLdotQ9wMJH3QJWY/NjeAkgkZKvAh9rvDNnRYVSJFobq/2o1bxYFWf7ardqNnyAM6qPQzzP5YlJA4gn558jg==
-  dependencies:
-    "@babel/plugin-proposal-class-properties" "7.10.4"
-    "@babel/plugin-proposal-decorators" "7.10.4"
-    "@babel/plugin-proposal-do-expressions" "7.10.4"
-    "@babel/plugin-proposal-export-default-from" "7.10.4"
-    "@babel/plugin-proposal-function-bind" "7.10.4"
-    "@babel/plugin-proposal-logical-assignment-operators" "7.10.4"
-    "@babel/plugin-proposal-nullish-coalescing-operator" "7.10.4"
-    "@babel/plugin-proposal-optional-chaining" "7.10.4"
-    "@babel/plugin-proposal-pipeline-operator" "7.10.4"
-    "@babel/plugin-syntax-top-level-await" "7.10.4"
-    "@babel/plugin-transform-destructuring" "7.10.4"
-    "@babel/plugin-transform-runtime" "7.10.4"
-    "@babel/preset-env" "7.10.4"
-    "@babel/preset-react" "7.10.4"
-    "@babel/preset-typescript" "7.10.4"
-    "@babel/runtime" "7.10.4"
-    "@svgr/webpack" "4.3.3"
-    "@umijs/babel-plugin-auto-css-modules" "3.2.21"
-    "@umijs/babel-plugin-import-to-await-require" "3.2.21"
-    "@umijs/babel-plugin-lock-core-js-3" "3.2.21"
     babel-plugin-dynamic-import-node "2.3.3"
     babel-plugin-import "^1.13.0"
     babel-plugin-named-asset-import "0.3.6"
@@ -5015,55 +4959,6 @@
     "@types/resolve" "1.17.1"
     "@types/rimraf" "3.0.0"
     "@types/semver" "7.3.2"
-    "@types/signale" "1.4.1"
-    "@types/yargs" "15.0.5"
-    "@types/yargs-parser" "15.0.0"
-    address "1.1.2"
-    chalk "4.1.0"
-    cheerio "1.0.0-rc.3"
-    chokidar "3.4.2"
-    clipboardy "2.3.0"
-    color "3.1.2"
-    crequire "1.8.1"
-    cross-spawn "7.0.3"
-    debug "4.1.1"
-    deepmerge "4.2.2"
-    execa "4.0.3"
-    glob "7.1.6"
-    got "9.6.0"
-    lodash "4.17.20"
-    mkdirp "1.0.4"
-    mustache "4.0.1"
-    pkg-up "3.1.0"
-    portfinder "1.0.28"
-    resolve "1.17.0"
-    rimraf "3.0.2"
-    semver "7.3.2"
-    signale "1.4.0"
-    yargs "15.4.1"
-    yargs-parser "18.1.3"
-
-"@umijs/utils@3.2.21":
-  version "3.2.21"
-  resolved "https://registry.yarnpkg.com/@umijs/utils/-/utils-3.2.21.tgz#166b3485d5cbed63792dd5a23617a8f581fd1a88"
-  integrity sha512-/RB9ZBfsCFUJJMQ2rLgVWsssjikrcwK02u7gJdeNuyzAzYHUEPkyvYhgp+TXWEkkGHU/Izg5hj3hz4bZEwtLcA==
-  dependencies:
-    "@babel/parser" "7.11.5"
-    "@babel/register" "7.11.5"
-    "@babel/traverse" "7.11.5"
-    "@babel/types" "7.11.5"
-    "@types/cheerio" "0.22.21"
-    "@types/color" "3.0.1"
-    "@types/cross-spawn" "6.0.2"
-    "@types/debug" "4.1.5"
-    "@types/glob" "7.1.3"
-    "@types/got" "9.6.11"
-    "@types/lodash" "4.14.161"
-    "@types/mkdirp" "1.0.1"
-    "@types/mustache" "4.0.1"
-    "@types/resolve" "1.17.1"
-    "@types/rimraf" "3.0.0"
-    "@types/semver" "7.3.3"
     "@types/signale" "1.4.1"
     "@types/yargs" "15.0.5"
     "@types/yargs-parser" "15.0.0"
