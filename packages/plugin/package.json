@@ -19,8 +19,8 @@
   ],
   "peerDependencies": {
     "antd": "^4.5.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.13.1 || ^17.0.0",
+    "react-dom": "^16.13.1 || ^17.0.0"
   },
   "dependencies": {
     "@rjsf/antd": "^2.3.0",
