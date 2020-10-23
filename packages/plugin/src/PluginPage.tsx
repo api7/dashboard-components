@@ -19,7 +19,7 @@ type Props = {
   readonly?: boolean;
   initialData?: PluginPage.FinalData;
   onChange?(data: PluginPage.FinalData): void;
-  schemaType?: string;
+  schemaType?: '' | 'route' | 'consumer';
 };
 
 const PanelSectionStyle = {
@@ -32,7 +32,7 @@ const PanelSectionStyle = {
 
 const { Sider, Content } = Layout;
 
-const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange = () => {}, schemaType='' }) => {
+const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange = () => {}, schemaType= 'route' }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
   const [allPlugins, setAllPlugins] = useState<PluginPage.PluginMapperItem[][]>([]);

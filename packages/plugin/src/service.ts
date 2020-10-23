@@ -58,10 +58,10 @@ const cachedPluginSchema: Record<string, object> = {
   'route': {},
   'consumer': {}
 }
-export const fetchPluginSchema = async (name: string, schemaType?: string): Promise<JSONSchema7> => {
-  if (!cachedPluginSchema[schemaType || 'route'][name]) {
-    let queryString = schemaType ? `?schema_type=${schemaType}` : ''
-    cachedPluginSchema[schemaType || 'route'][name] = await request(`/schema/plugins/${name}${queryString}`)
+export const fetchPluginSchema = async (name: string, schemaType: string): Promise<JSONSchema7> => {
+  if (!cachedPluginSchema[schemaType][name]) {
+    let queryString = schemaType !== 'route' ? `?schema_type=${schemaType}` : ''
+    cachedPluginSchema[schemaType][name] = await request(`/schema/plugins/${name}${queryString}`)
   }
-  return transformPlugin(name, cachedPluginSchema[schemaType || 'route'][name], 'schema')
+  return transformPlugin(name, cachedPluginSchema[schemaType][name], 'schema')
 }
