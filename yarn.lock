@@ -4780,10 +4780,10 @@
     react-intl "3.12.1"
     warning "^4.0.3"
 
-"@umijs/plugin-model@2.5.5":
-  version "2.5.5"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-model/-/plugin-model-2.5.5.tgz#c4c199f01b1b9502cc9e118d43e87175450a38dd"
-  integrity sha512-fhXMH14YvRaitdJHr4EixH4bVSOAiZAJpKYYofn8iE5OvbSMwEYm1KSPZk1jGUCLqQywWRqpGef1QZfZHTNDxg==
+"@umijs/plugin-model@2.5.6":
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-model/-/plugin-model-2.5.6.tgz#1eec24000d608375d0790fb6713a50d7ee7b5153"
+  integrity sha512-ErZk1/7pc687pQM26wN96eAH9hhzkBeeTtPShMX9HgQudtTwWX1LRjlMUjtn2+H6ADbfLipkZ9FuXn1pPLpUAA==
   dependencies:
     fast-deep-equal "3.1.1"
 
@@ -4838,10 +4838,10 @@
     umi-webpack-bundle-analyzer "3.6.0"
     zlib "1.0.5"
 
-"@umijs/preset-react@1.6.15":
-  version "1.6.15"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.15.tgz#e3b1057394af11f4bb9682cefa27d7ef63a95c16"
-  integrity sha512-JsljUnN7kqgPKK7JfM0fYkk2xKG70lahpJthVf6JjFJxfo/syuDi5F7+BAlc5paY1fCBGjRmhCcePf4MUViqGQ==
+"@umijs/preset-react@1.6.16":
+  version "1.6.16"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.16.tgz#4740cecb01e722817254b4bd6c2e81cbc8f07ac0"
+  integrity sha512-uoMPv+AW1Fmk19Qv3/OxPM8vYqfd1Y4H1ItdRW0ojQVadYFd/U4PlLPTVC5FO+DE8h5tQqb0Ei2vCfkVwgoXiQ==
   dependencies:
     "@umijs/plugin-access" "2.3.1"
     "@umijs/plugin-analytics" "0.2.2"
@@ -4852,7 +4852,7 @@
     "@umijs/plugin-initial-state" "2.2.1"
     "@umijs/plugin-layout" "0.12.4"
     "@umijs/plugin-locale" "0.10.4"
-    "@umijs/plugin-model" "2.5.5"
+    "@umijs/plugin-model" "2.5.6"
     "@umijs/plugin-request" "2.5.0"
     "@umijs/plugin-test" "1.0.0"
 
