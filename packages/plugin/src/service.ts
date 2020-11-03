@@ -57,7 +57,7 @@ export const getList = async (plugins: Record<string, object> = {}) => {
 const cachedPluginSchema: Record<string, object> = {
   'route': {},
   'consumer': {}
-}
+};
 export const fetchPluginSchema = async (name: string, schemaType: string): Promise<JSONSchema7> => {
   if (!cachedPluginSchema[schemaType][name]) {
     let queryString = schemaType !== 'route' ? `?schema_type=${schemaType}` : ''
@@ -67,5 +67,5 @@ export const fetchPluginSchema = async (name: string, schemaType: string): Promi
       delete cachedPluginSchema[schemaType][name].properties;
     }
   }
-  return transformPlugin(name, cachedPluginSchema[schemaType][name], 'schema')
-}
+  return transformPlugin(name, cachedPluginSchema[schemaType][name], 'schema');
+};
