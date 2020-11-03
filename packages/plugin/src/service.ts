@@ -50,10 +50,22 @@ export const getList = async (plugins: Record<string, object> = {}) => {
     });
 };
 
-const cachedPluginSchema: Record<string, object> = {};
-export const fetchPluginSchema = async (name: string): Promise<JSONSchema7> => {
-  if (!cachedPluginSchema[name]) {
-    cachedPluginSchema[name] = (await request(`/schema/plugins/${name}`)).data;
+/** cache pulgin schema by schemaType
+ *  default schema is route for plugins in route
+ *  support schema: consumer for plugins in consumer
+ */
+const cachedPluginSchema: Record<string, object> = {
+  'route': {},
+  'consumer': {}
+};
+export const fetchPluginSchema = async (name: string, schemaType: string): Promise<JSONSchema7> => {
+  if (!cachedPluginSchema[schemaType][name]) {
+    let queryString = schemaType !== 'route' ? `?schema_type=${schemaType}` : ''
+    cachedPluginSchema[schemaType][name] = (await request(`/schema/plugins/${name}${queryString}`)).data
+    // for plugins schema returned with properties: [], which will cause parse error
+    if (JSON.stringify(cachedPluginSchema[schemaType][name].properties) === "[]") {
+      delete cachedPluginSchema[schemaType][name].properties;
+    }
   }
-  return transformPlugin(name, cachedPluginSchema[name], 'schema');
+  return transformPlugin(name, cachedPluginSchema[schemaType][name], 'schema');
 };
