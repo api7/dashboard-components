@@ -4,13 +4,12 @@ import { SCHEMA_REQUEST_VALIDATION } from './data'
 
 type TransformerType = 'schema' | 'request' | 'response';
 
-const schemaResponseRewrite = (data: any) => {
+const schemaRewriteHeader = (data: any) => {
   const { description } = data?.properties?.headers;
 
   setValue(data, 'properties.headers', {
     description,
     type: 'array',
-    minItems: 1,
     items: {
       type: 'object',
       properties: {
@@ -18,20 +17,49 @@ const schemaResponseRewrite = (data: any) => {
           type: 'string',
         },
         value: {
-          type: 'string',
+          "type": "object",
+          "oneOf": [
+            {
+              "title": "value type is string",
+              "properties": {
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "title": "value type is number",
+              "properties": {
+                "value": {
+                  "type": "number"
+                }
+              }
+            }
+          ]
         },
       },
     },
   });
+  return data;
+};
 
+/**
+ * Transform data before sending Request
+ */
+const requestRewriteHeader = (data: any) => {
+  const headers = {};
+  (data.headers || []).forEach((item: Record<string, string>) => {
+    headers[item.key] = item.value;
+  });
+  setValue(data, 'headers', headers);
   return data;
 };
 
 /**
  * Transform data after receiving Response
  */
-const responseResponseRewrite = (data: any) => {
-  const headers = Object.entries(data?.properties?.headers || {}).map(([key, value]) => {
+const responseRewriteHeader = (data: any) => {
+  const headers = Object.entries(data?.headers || {}).map(([key, value]) => {
     return {
       key,
       value,
@@ -41,29 +69,18 @@ const responseResponseRewrite = (data: any) => {
   return data;
 };
 
-/**
- * Transform data before sending Request
- */
-const requestResponseRewrite = (data: any) => {
-  const headers = {};
-  (data.headers || []).forEach((item: Record<string, string>) => {
-    headers[item.key] = item.value;
-  });
-  setValue(data, 'headers', headers);
-  return data;
-};
-
 export const transformPlugin = (name: string, data: any, type: TransformerType) => {
   switch (name) {
     case 'response-rewrite':
+    case 'proxy-rewrite':
       if (type === 'schema') {
-        return schemaResponseRewrite(data);
+        return schemaRewriteHeader(data);
       }
       if (type === 'request') {
-        return requestResponseRewrite(data);
+        return requestRewriteHeader(data);
       }
       if (type === 'response') {
-        return responseResponseRewrite(data);
+        return responseRewriteHeader(data);
       }
       break;
     case 'request-validation':
