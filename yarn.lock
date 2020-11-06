@@ -4764,10 +4764,10 @@
   resolved "https://registry.yarnpkg.com/@umijs/plugin-initial-state/-/plugin-initial-state-2.2.1.tgz#cd7592aa90b6b369bd0df297254320088397ff67"
   integrity sha512-qDtWguduISeG+EObgKbImuRX3FyLrNcj3yQtY24HdYkDTGmtsmA4ZKB7Q/N+V/O0Yxep06bCotTK3jFV9KXuEA==
 
-"@umijs/plugin-layout@0.12.4":
-  version "0.12.4"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-layout/-/plugin-layout-0.12.4.tgz#8a307039b3b692eb55629283d6c6bc43c69da863"
-  integrity sha512-I4NwcmEYTVdRzjG+/ZhBAihSOwyE7ngbX8bB2NdaQGDm6h0fdZg3lX/eoPsnxpsFZR2dUKHrRq5NjmPNPhbptg==
+"@umijs/plugin-layout@0.12.5":
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-layout/-/plugin-layout-0.12.5.tgz#ef6a426ea4decd787dea40933b132e08b66d80fa"
+  integrity sha512-iWWf5gn1MbzrJV1Vf1j3gNsWauEUt/82n5Im9JM8GQKpEgH5t5ham38WdOyjNwozUyi3qQ3HMnXA2b8TvXZlOQ==
   dependencies:
     "@umijs/route-utils" "^1.0.7"
     antd "^4.1.2"
@@ -4845,10 +4845,10 @@
     umi-webpack-bundle-analyzer "3.6.0"
     zlib "1.0.5"
 
-"@umijs/preset-react@1.6.17":
-  version "1.6.17"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.17.tgz#ccaecf6e81064b8d342d232300b9430d18d11778"
-  integrity sha512-Muw/oayIzrqNSf8+wn9z1mELW3JXHNc3M8htCRXL86cscplwZDnAKx+brihbVgGcp3YFgk9oaRZJr7qfqYLd5w==
+"@umijs/preset-react@1.6.18":
+  version "1.6.18"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.18.tgz#a26cda9989fcf99934d635138588c03ab576ade4"
+  integrity sha512-AWhUo/ifgAibWQpEa68hXEQBlhKXlyvuZXK/zIAZ+gxwqIJnrsWs4+PMfyu+4YcC/5zsfC7Cxq3UyDIGn0bbDw==
   dependencies:
     "@umijs/plugin-access" "2.3.2"
     "@umijs/plugin-analytics" "0.2.2"
@@ -4857,7 +4857,7 @@
     "@umijs/plugin-dva" "0.9.1"
     "@umijs/plugin-helmet" "1.1.1"
     "@umijs/plugin-initial-state" "2.2.1"
-    "@umijs/plugin-layout" "0.12.4"
+    "@umijs/plugin-layout" "0.12.5"
     "@umijs/plugin-locale" "0.10.4"
     "@umijs/plugin-model" "2.5.6"
     "@umijs/plugin-request" "2.5.0"
@@ -7173,11 +7173,6 @@ commander@^2.18.0, commander@^2.20.0:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
-
-commander@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-6.0.0.tgz#2b270da94f8fb9014455312f829a1129dbf8887e"
-  integrity sha512-s7EA+hDtTYNhuXkTlhqew4txMZVdszBmKWSPEMxGr8ru8JXR7bLUFIAtPhcSuFdJQ0ILMxnJi8GkQL0yvDy/YA==
 
 commander@^6.2.0:
   version "6.2.0"
