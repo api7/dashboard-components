@@ -1,5 +1,7 @@
+import React from 'react';
+
 import { PluginPage } from './typing';
-import IconFont from './IconFont'
+import IconFont from './IconFont';
 
 export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperItem, 'name'>> = {
   'limit-req': {
@@ -153,3 +155,183 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
     priority: 3
   }
 };
+
+export const SCHEMA_REQUEST_VALIDATION = {
+  "type": "object",
+  "properties": {
+    "requestParams": {
+      "title": "define request paramers",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "anyOf": [
+          {
+            "title": "define body params",
+            "properties": {
+              "body_schema": {
+                "$ref": "#/definitions/requestParams"
+              }
+            },
+            "required": ["body_schema"],
+            "minItems": 1
+          },
+          {
+            "title": "define header params",
+            "properties": {
+              "header_schema": {
+                "$ref": "#/definitions/requestParams"
+              }
+            },
+            "required": ["header_schema"],
+            "minItems": 1
+          }
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "definitions": {
+    "requestParams": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "valueType": {
+          "type": "string",
+          "enum": [
+            "string",
+            "array",
+            "integer",
+            "number",
+            "object",
+            "boolean"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        }
+      },
+      "dependencies": {
+        "valueType": {
+          "oneOf": [
+            {
+              "properties": {
+                "valueType": {
+                  "enum": [
+                    "string"
+                  ]
+                },
+                "minLength": {
+                  "type": "integer"
+                },
+                "maxLength": {
+                  "type": "integer"
+                },
+                "pattern": {
+                  "type": "string"
+                },
+                "enumValues": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": ["valueType"]
+            },
+            {
+              "properties": {
+                "valueType": {
+                  "enum": [
+                    "array"
+                  ]
+                },
+                "minItems": {
+                  "type": "integer"
+                },
+                "itemsType": {
+                  "type": "string",
+                  "enum": [
+                    "string",
+                    "array",
+                    "integer",
+                    "number",
+                    "object",
+                    "boolean"
+                  ]
+                },
+                "uniqueItems": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "valueType"
+              ]
+            },
+            {
+              "properties": {
+                "valueType": {
+                  "enum": [
+                    "integer"
+                  ]
+                },
+                "minimum": {
+                  "type": "integer"
+                },
+                "maximum": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "valueType"
+              ]
+            },
+            {
+              "properties": {
+                "valueType": {
+                  "enum": [
+                    "number"
+                  ]
+                },
+                "minimum": {
+                  "type": "number"
+                },
+                "maximum": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "valueType"
+              ]
+            },
+            {
+              "properties": {
+                "valueType": {
+                  "enum": [
+                    "object"
+                  ]
+                }
+              },
+              "required": [
+                "valueType"
+              ]
+            },
+            {
+              "properties": {
+                "valueType": {
+                  "enum": [
+                    "boolean"
+                  ]
+                }
+              },
+              "required": [
+                "valueType"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

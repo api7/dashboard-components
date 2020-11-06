@@ -1,5 +1,7 @@
 import setValue from 'set-value';
 
+import { SCHEMA_REQUEST_VALIDATION } from './data'
+
 type TransformerType = 'schema' | 'request' | 'response';
 
 const schemaResponseRewrite = (data: any) => {
@@ -51,17 +53,6 @@ const requestResponseRewrite = (data: any) => {
   return data;
 };
 
-const schemaPrometheus = (data: object) => {
-  return {
-    ...data,
-    properties: {
-      enabled: {
-        type: 'boolean',
-      },
-    },
-  };
-};
-
 export const transformPlugin = (name: string, data: any, type: TransformerType) => {
   switch (name) {
     case 'response-rewrite':
@@ -73,6 +64,11 @@ export const transformPlugin = (name: string, data: any, type: TransformerType) 
       }
       if (type === 'response') {
         return responseResponseRewrite(data);
+      }
+      break;
+    case 'request-validation':
+      if (type === 'schema') {
+        return SCHEMA_REQUEST_VALIDATION;
       }
       break;
     default:
