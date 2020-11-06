@@ -4759,10 +4759,10 @@
     "@types/react-helmet" "^6.1.0"
     react-helmet "^6.1.0"
 
-"@umijs/plugin-initial-state@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-initial-state/-/plugin-initial-state-2.2.1.tgz#cd7592aa90b6b369bd0df297254320088397ff67"
-  integrity sha512-qDtWguduISeG+EObgKbImuRX3FyLrNcj3yQtY24HdYkDTGmtsmA4ZKB7Q/N+V/O0Yxep06bCotTK3jFV9KXuEA==
+"@umijs/plugin-initial-state@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-initial-state/-/plugin-initial-state-2.3.0.tgz#b0afc6cf8446bddb0ed2c2fa4271c4cff993d688"
+  integrity sha512-R1hhzwFX3GA+kP0sjci2DwfLStCeOCdE0EjOV4HgzBkWR1YhX4ytof+eTgJlwx7o27zRqGNfk4DZVO3wmYpc0w==
 
 "@umijs/plugin-layout@0.12.5":
   version "0.12.5"
@@ -4845,10 +4845,10 @@
     umi-webpack-bundle-analyzer "3.6.0"
     zlib "1.0.5"
 
-"@umijs/preset-react@1.6.18":
-  version "1.6.18"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.18.tgz#a26cda9989fcf99934d635138588c03ab576ade4"
-  integrity sha512-AWhUo/ifgAibWQpEa68hXEQBlhKXlyvuZXK/zIAZ+gxwqIJnrsWs4+PMfyu+4YcC/5zsfC7Cxq3UyDIGn0bbDw==
+"@umijs/preset-react@1.6.19":
+  version "1.6.19"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.19.tgz#8acbfab77c10518d98c319b8eb8d5916174864ba"
+  integrity sha512-7QB7bpRyR9RRm8Xkn/a/5iczjPIAazqYgfybE76meY5Q3XJk4lNsx6q64hKUWIVwZTRobT9yjv5CsTaFLaTwmA==
   dependencies:
     "@umijs/plugin-access" "2.3.2"
     "@umijs/plugin-analytics" "0.2.2"
@@ -4856,7 +4856,7 @@
     "@umijs/plugin-crossorigin" "1.2.0"
     "@umijs/plugin-dva" "0.9.1"
     "@umijs/plugin-helmet" "1.1.1"
-    "@umijs/plugin-initial-state" "2.2.1"
+    "@umijs/plugin-initial-state" "2.3.0"
     "@umijs/plugin-layout" "0.12.5"
     "@umijs/plugin-locale" "0.10.4"
     "@umijs/plugin-model" "2.5.6"
