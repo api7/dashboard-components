@@ -164,28 +164,7 @@ export const SCHEMA_REQUEST_VALIDATION = {
       "type": "array",
       "items": {
         "type": "object",
-        "anyOf": [
-          {
-            "title": "define body params",
-            "properties": {
-              "body_schema": {
-                "$ref": "#/definitions/requestParams"
-              }
-            },
-            "required": ["body_schema"],
-            "minItems": 1
-          },
-          {
-            "title": "define header params",
-            "properties": {
-              "header_schema": {
-                "$ref": "#/definitions/requestParams"
-              }
-            },
-            "required": ["header_schema"],
-            "minItems": 1
-          }
-        ]
+        "$ref": "#/definitions/requestParams"
       },
       "minItems": 1
     }
@@ -194,6 +173,13 @@ export const SCHEMA_REQUEST_VALIDATION = {
     "requestParams": {
       "type": "object",
       "properties": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "body_schema",
+            "header_schema"
+          ]
+        },
         "key": {
           "type": "string"
         },
@@ -331,7 +317,8 @@ export const SCHEMA_REQUEST_VALIDATION = {
             }
           ]
         }
-      }
+      },
+      "required": ["schema", "key", "valueType"]
     }
   }
 }
