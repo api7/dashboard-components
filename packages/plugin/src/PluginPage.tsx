@@ -19,6 +19,7 @@ type Props = {
   readonly?: boolean;
   initialData?: PluginPage.FinalData;
   onChange?(data: PluginPage.FinalData): void;
+  schemaType?: '' | 'route' | 'consumer';
 };
 
 const PanelSectionStyle = {
@@ -31,7 +32,7 @@ const PanelSectionStyle = {
 
 const { Sider, Content } = Layout;
 
-const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange = () => {} }) => {
+const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange = () => {}, schemaType= 'route' }) => {
   const [pluginName, setPluginName] = useState<string | undefined>();
   const [schema, setSchema] = useState<JSONSchema7>();
   const [allPlugins, setAllPlugins] = useState<PluginPage.PluginMapperItem[][]>([]);
@@ -120,7 +121,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                           style={{ marginRight: 10, marginLeft: 10 }}
                           size="middle"
                           onClick={() => {
-                            fetchPluginSchema(name!).then((schemaData) => {
+                            fetchPluginSchema(name!, schemaType).then((schemaData) => {
                               setSchema(schemaData);
                               setTimeout(() => {
                                 setPluginName(name);
@@ -136,7 +137,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
                           // NOTE: 当前生命周期为：若关闭插件，则移除数据状态；再启用时，该插件一定是没有状态的。
                           if (isChecked) {
                             const data = initialData[name] || {};
-                            fetchPluginSchema(name!).then((schemaData) => {
+                            fetchPluginSchema(name!, schemaType).then((schemaData) => {
                               const validate = ajv.validate(schemaData, data);
                               if (validate) {
                                 onChange({ ...initialData, [name]: data });

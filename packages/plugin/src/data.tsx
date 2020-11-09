@@ -63,7 +63,6 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   },
   'grpc-transcode': {
     category: 'Other',
-    hidden: true,
   },
   'serverless-pre-function': {
     category: 'Other',
@@ -78,7 +77,6 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   },
   'proxy-rewrite': {
     category: 'Other',
-    hidden: true,
   },
   redirect: {
     category: 'Other',
@@ -97,7 +95,6 @@ export const PLUGIN_MAPPER_SOURCE: Record<string, Omit<PluginPage.PluginMapperIt
   },
   'wolf-rbac': {
     category: 'Other',
-    hidden: true,
   },
   'proxy-cache': {
     category: 'Other',
