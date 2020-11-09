@@ -3,8 +3,6 @@ import { omit } from 'lodash';
 
 import { SCHEMA_REQUEST_VALIDATION } from './data'
 
-import { SCHEMA_REQUEST_VALIDATION } from './data'
-
 type TransformerType = 'schema' | 'request' | 'response';
 
 const schemaRewriteHeader = (data: any) => {
@@ -137,11 +135,6 @@ export const transformPlugin = (name: string, data: any, type: TransformerType) 
       }
       if (type === 'response') {
         return responseRewriteHeader(data);
-      }
-      break;
-    case 'request-validation':
-      if (type === 'schema') {
-        return SCHEMA_REQUEST_VALIDATION;
       }
       break;
     case 'request-validation':
