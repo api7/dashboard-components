@@ -27,7 +27,7 @@
     "@umijs/fabric": "2.3.1",
     "@umijs/utils": "3.2.26",
     "antd": "4.8.2",
-    "babel-loader": "8.2.0",
+    "babel-loader": "8.2.1",
     "babel-plugin-import": "1.13.1",
     "chalk": "4.1.0",
     "cross-env": "7.0.2",
