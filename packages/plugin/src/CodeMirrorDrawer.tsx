@@ -12,10 +12,10 @@ const CodeMirrorDrawer: React.FC<Props> = ({ visiable, data = {}, onClose }) => 
   return (
     <Drawer visible={visiable} width={500} onClose={onClose}>
       <CodeMirror
-        value={JSON.stringify(data)}
+        value={JSON.stringify(data, null, 2)}
         options={{
           mode: 'json-ld',
-          readonly: true
+          readOnly: 'nocursor'
         }}
       />
     </Drawer>
