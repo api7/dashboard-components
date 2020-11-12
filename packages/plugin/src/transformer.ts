@@ -2,6 +2,7 @@ import setValue from 'set-value';
 import { omit, isEmpty } from 'lodash';
 
 import { SCHEMA_REQUEST_VALIDATION } from './data'
+import { PluginPage } from './typing.d';
 
 type TransformerType = 'schema' | 'request' | 'response';
 
@@ -48,9 +49,12 @@ const schemaRewriteHeader = (data: any) => {
  * Transform data before sending Request
  */
 const requestRewriteHeader = (data: any) => {
-  const headers = {};
-  (data.headers || []).forEach((item: Record<string, string>) => {
-    headers[item.key] = item.value;
+  let headers = {};
+  (data.headers || []).forEach((item: PluginPage.RequestRewriteHeader) => {
+    headers = {
+      ...headers,
+      [item.key]: item.value.value
+    }
   });
   setValue(data, 'headers', headers);
 
@@ -68,7 +72,7 @@ const responseRewriteHeader = (data: any) => {
   const headers = Object.entries(data?.headers || {}).map(([key, value]) => {
     return {
       key,
-      value,
+      value:{value}
     };
   });
   setValue(data, 'headers', headers);
