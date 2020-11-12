@@ -83,6 +83,7 @@ export const transformPlugin = (name: string, data: any, type: TransformerType) 
   switch (name) {
     case 'response-rewrite':
     case 'proxy-rewrite':
+    case 'echo':
       if (type === 'schema') {
         return schemaRewriteHeader(data);
       }
