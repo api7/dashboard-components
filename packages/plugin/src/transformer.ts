@@ -1,4 +1,5 @@
 import setValue from 'set-value';
+import { omit, isEmpty } from 'lodash';
 
 import { SCHEMA_REQUEST_VALIDATION } from './data'
 
@@ -52,6 +53,11 @@ const requestRewriteHeader = (data: any) => {
     headers[item.key] = item.value;
   });
   setValue(data, 'headers', headers);
+
+  if (isEmpty(headers)) {
+    return omit(data, ['headers']);
+  }
+
   return data;
 };
 
