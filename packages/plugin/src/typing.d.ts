@@ -33,4 +33,11 @@ export declare namespace PluginPage {
     message: string;
     request_id: string;
   };
+
+  type RequestRewriteHeader = {
+    key: string;
+    value: {
+      value: string | number;
+    }
+  }
 }
