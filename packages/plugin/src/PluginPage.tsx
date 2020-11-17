@@ -172,10 +172,7 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
         onClose={() => {
           // when data is not empty, close panel also needs data transform
           if (!isEmpty(initialData) && !isEmpty(initialData[pluginName!])) {
-            onChange({
-              ...initialData,
-              [pluginName!]: transformPlugin(pluginName!, initialData[pluginName!], 'request'),
-            });
+            transformPlugin(pluginName!, initialData[pluginName!], 'request');
           }
           setPluginName(undefined);
         }}
