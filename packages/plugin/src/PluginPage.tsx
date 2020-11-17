@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { EyeFilled, SettingFilled } from '@ant-design/icons';
 import { JSONSchema7 } from 'json-schema';
 import { Anchor, Layout, Switch, Card, Tooltip, Button, notification, Avatar } from 'antd';
-import { omit } from 'lodash';
+import { omit, isEmpty } from 'lodash';
 import Ajv from 'ajv';
 
 // @ts-ignore
@@ -43,7 +43,6 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
   }, [initialData]);
 
   const ajv = new Ajv();
-
   return (
     <>
       <style>{`
@@ -171,6 +170,10 @@ const PluginPageApp: React.FC<Props> = ({ initialData = {}, readonly, onChange =
         readonly={readonly}
         schema={schema!}
         onClose={() => {
+          // when data is not empty, close panel also needs data transform
+          if (!isEmpty(initialData) && !isEmpty(initialData[pluginName!])) {
+            transformPlugin(pluginName!, initialData[pluginName!], 'request');
+          }
           setPluginName(undefined);
         }}
         onFinish={(value) => {
