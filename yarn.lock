@@ -4818,10 +4818,10 @@
     umi-webpack-bundle-analyzer "3.6.0"
     zlib "1.0.5"
 
-"@umijs/preset-react@1.6.19":
-  version "1.6.19"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.19.tgz#8acbfab77c10518d98c319b8eb8d5916174864ba"
-  integrity sha512-7QB7bpRyR9RRm8Xkn/a/5iczjPIAazqYgfybE76meY5Q3XJk4lNsx6q64hKUWIVwZTRobT9yjv5CsTaFLaTwmA==
+"@umijs/preset-react@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.7.0.tgz#a5e81f7751cca092cc6edb6c9538eec159c5134d"
+  integrity sha512-9YH/5BK9L/5Ednu2DKkNtnTlksy3fMSP35elhJtx7YDC4JAtDcuj1Z+XZqoSumayoWPwn/CpBiKBa10bMpugAQ==
   dependencies:
     "@umijs/plugin-access" "2.3.2"
     "@umijs/plugin-analytics" "0.2.2"
