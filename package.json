@@ -19,7 +19,7 @@
     "@babel/preset-react": "7.12.7",
     "@babel/preset-typescript": "7.12.7",
     "@types/lodash": "4.14.165",
-    "@types/react": "16.9.56",
+    "@types/react": "16.14.1",
     "@types/react-dom": "16.9.9",
     "@types/react-helmet": "6.1.0",
     "@umijs/babel-preset-umi": "3.2.28",
