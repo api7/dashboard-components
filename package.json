@@ -28,7 +28,7 @@
     "@umijs/utils": "3.2.28",
     "antd": "4.8.5",
     "babel-loader": "8.2.1",
-    "babel-plugin-import": "1.13.1",
+    "babel-plugin-import": "1.13.3",
     "chalk": "4.1.0",
     "cross-env": "7.0.2",
     "css-loader": "5.0.1",
