@@ -13,7 +13,7 @@
     "clean": "lerna clean -y"
   },
   "devDependencies": {
-    "@babel/core": "7.12.7",
+    "@babel/core": "7.12.9",
     "@babel/plugin-proposal-object-rest-spread": "7.12.1",
     "@babel/preset-env": "7.12.7",
     "@babel/preset-react": "7.12.7",
@@ -27,7 +27,7 @@
     "@umijs/fabric": "2.3.1",
     "@umijs/utils": "3.2.28",
     "antd": "4.8.5",
-    "babel-loader": "8.2.1",
+    "babel-loader": "8.2.2",
     "babel-plugin-import": "1.13.1",
     "chalk": "4.1.0",
     "cross-env": "7.0.2",
