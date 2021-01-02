@@ -27,7 +27,7 @@
     "@rjsf/core": "^2.3.0",
     "@uiw/react-codemirror": "^3.0.1",
     "ajv": "^6.12.5",
-    "json-schema": "^0.2.5",
+    "json-schema": "^0.3.0",
     "set-value": "^3.0.2"
   },
   "devDependencies": {

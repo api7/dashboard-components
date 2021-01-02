@@ -27,7 +27,7 @@
     "@mrblenny/react-flow-chart": "^0.0.14",
     "@rjsf/antd": "^2.3.0",
     "@rjsf/core": "^2.3.0",
-    "json-schema": "^0.2.5",
+    "json-schema": "^0.3.0",
     "lodash": "^4.17.20",
     "styled-components": "^5.1.1"
   },
