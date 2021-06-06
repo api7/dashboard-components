@@ -2374,6 +2374,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@bloomberg/record-tuple-polyfill@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@bloomberg/record-tuple-polyfill/-/record-tuple-polyfill-0.0.3.tgz#0b03d18b88a30894caab14abd669b1cbbf47b843"
+  integrity sha512-sBnCqW0nqofE47mxFnw+lvx6kzsQstwaQMVkh66qm/A6IlsnH7WsyGuVXTou8RF2wL4W7ybOoHPvP2WgIo6rhQ==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -4644,13 +4649,10 @@
     "@babel/traverse" "7.12.5"
     "@umijs/utils" "3.2.27"
 
-"@umijs/babel-plugin-auto-css-modules@3.2.28":
-  version "3.2.28"
-  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-auto-css-modules/-/babel-plugin-auto-css-modules-3.2.28.tgz#c78083b362a0ea5417930b5dbc7837c71f1bb119"
-  integrity sha512-rqI7fraM2/WMz1X043ee+CZ4bv9HcwRIHqFciWgoin/jx54XFvGGkqa6oU1tdugTSGe7cS7CBRdAwFikeq8qjQ==
-  dependencies:
-    "@babel/traverse" "7.12.5"
-    "@umijs/utils" "3.2.28"
+"@umijs/babel-plugin-auto-css-modules@3.4.25":
+  version "3.4.25"
+  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-auto-css-modules/-/babel-plugin-auto-css-modules-3.4.25.tgz#7ce597a1aa7fb7a8e53635699100b82db78b5a32"
+  integrity sha512-rlvePRMy2ak99/MeUCgjSYB9a6YmeG0gJqyQ1MVNJ6biDMkegKcI67zuIY+cNfr+2sIQ4gwj5oO0vGYS/THv5g==
 
 "@umijs/babel-plugin-import-to-await-require@3.2.16":
   version "3.2.16"
@@ -4668,13 +4670,12 @@
     "@babel/traverse" "7.12.5"
     "@umijs/utils" "3.2.27"
 
-"@umijs/babel-plugin-import-to-await-require@3.2.28":
-  version "3.2.28"
-  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-import-to-await-require/-/babel-plugin-import-to-await-require-3.2.28.tgz#11f46d54751cbb9d01b0d1fd4da7f8fbf5e7b0e4"
-  integrity sha512-41+2Mi4vLMojYlh3csDMR7Zd18EzZj+OWZFh6XxDgwnShf2qTNopy8beb/zPLNblPhxznlhaJEiGRsZal1q0qA==
+"@umijs/babel-plugin-import-to-await-require@3.4.25":
+  version "3.4.25"
+  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-import-to-await-require/-/babel-plugin-import-to-await-require-3.4.25.tgz#8bc8347d36d1107605dcbf5b6f41498aa062206c"
+  integrity sha512-Ca8OP6yEcaq1VnUy6GMLxPCVFFchT+dTgNpQmR6MMzDactXSM2gP/+BAny0tJm9Qr9LjyYJ9sPkZAMDsSwXFKA==
   dependencies:
-    "@babel/traverse" "7.12.5"
-    "@umijs/utils" "3.2.28"
+    "@umijs/utils" "3.4.25"
 
 "@umijs/babel-plugin-lock-core-js-3@3.2.16":
   version "3.2.16"
@@ -4692,13 +4693,20 @@
     "@umijs/utils" "3.2.27"
     core-js "3.6.5"
 
-"@umijs/babel-plugin-lock-core-js-3@3.2.28":
-  version "3.2.28"
-  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-lock-core-js-3/-/babel-plugin-lock-core-js-3-3.2.28.tgz#3d676e955178e10c3b60e953078616f10560e92a"
-  integrity sha512-1+chipGOLyjaDyyHzwEgEGAy9hIjcmUgXWWaMQ2Z87nLcr+ICSzRjDrC6GZKyILZGPtCWmQDlaPiYZHwO41NCg==
+"@umijs/babel-plugin-lock-core-js-3@3.4.25":
+  version "3.4.25"
+  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-lock-core-js-3/-/babel-plugin-lock-core-js-3-3.4.25.tgz#2efce22ad4a970dc81f32ef2b49f6b46da0e0a4a"
+  integrity sha512-/+zUcwZiZ8eq/wUzp886UkXGqiI9lxLub2HTNW09rnwCHTUd9BM/ccInXrPD/zsQ1xA+hYcQiWftBvhsV19fHQ==
   dependencies:
-    "@umijs/utils" "3.2.28"
+    "@umijs/utils" "3.4.25"
     core-js "3.6.5"
+
+"@umijs/babel-plugin-no-anonymous-default-export@3.4.25":
+  version "3.4.25"
+  resolved "https://registry.yarnpkg.com/@umijs/babel-plugin-no-anonymous-default-export/-/babel-plugin-no-anonymous-default-export-3.4.25.tgz#4c47af75656b98bc84659bf7a4cc869645d95c0f"
+  integrity sha512-znQAVkOu+3z343ZfprR4Kz+0grd90CJd21dHFnpa6mo5P4H2JBrrHCWS2GN0lGPuyW9r9zVboFBTFaXBnP0trw==
+  dependencies:
+    "@umijs/utils" "3.4.25"
 
 "@umijs/babel-preset-umi@3.2.16":
   version "3.2.16"
@@ -4764,37 +4772,16 @@
     babel-plugin-transform-react-remove-prop-types "0.4.24"
     babel-plugin-transform-typescript-metadata "0.3.1"
 
-"@umijs/babel-preset-umi@3.2.28":
-  version "3.2.28"
-  resolved "https://registry.yarnpkg.com/@umijs/babel-preset-umi/-/babel-preset-umi-3.2.28.tgz#b58af8ebb312a064e4b403a1ff8144a5b10ab6e3"
-  integrity sha512-Imw/kbOqoA1D1fzxTsdBBCwLyoRHy76L70m9AMJLPa5z7mBk76YhG3BbPQAECi8Qhzpc/F8IqkB9dDLpp/KJiQ==
+"@umijs/babel-preset-umi@3.4.25":
+  version "3.4.25"
+  resolved "https://registry.yarnpkg.com/@umijs/babel-preset-umi/-/babel-preset-umi-3.4.25.tgz#0097a39b5abd5d0909483f72a1799298873da195"
+  integrity sha512-ml9K1oWtse9q42GddbW6ijh49uEW8WKqbiKhYP7wquNijmtWx5ZnQKF2VqRTkuzq3+kY50B9DtVSqoq+/YbjQg==
   dependencies:
-    "@babel/plugin-proposal-class-properties" "7.12.1"
-    "@babel/plugin-proposal-decorators" "7.12.1"
-    "@babel/plugin-proposal-do-expressions" "7.12.1"
-    "@babel/plugin-proposal-export-default-from" "7.12.1"
-    "@babel/plugin-proposal-function-bind" "7.12.1"
-    "@babel/plugin-proposal-logical-assignment-operators" "7.12.1"
-    "@babel/plugin-proposal-nullish-coalescing-operator" "7.12.1"
-    "@babel/plugin-proposal-optional-chaining" "7.12.1"
-    "@babel/plugin-proposal-pipeline-operator" "7.12.1"
-    "@babel/plugin-syntax-top-level-await" "7.12.1"
-    "@babel/plugin-transform-destructuring" "7.12.1"
-    "@babel/plugin-transform-runtime" "7.12.1"
-    "@babel/preset-env" "7.12.1"
-    "@babel/preset-react" "7.12.1"
-    "@babel/preset-typescript" "7.12.1"
     "@babel/runtime" "7.12.5"
-    "@svgr/webpack" "4.3.3"
-    "@umijs/babel-plugin-auto-css-modules" "3.2.28"
-    "@umijs/babel-plugin-import-to-await-require" "3.2.28"
-    "@umijs/babel-plugin-lock-core-js-3" "3.2.28"
-    babel-plugin-dynamic-import-node "2.3.3"
-    babel-plugin-import "^1.13.1"
-    babel-plugin-named-asset-import "0.3.7"
-    babel-plugin-react-require "3.1.3"
-    babel-plugin-transform-react-remove-prop-types "0.4.24"
-    babel-plugin-transform-typescript-metadata "0.3.1"
+    "@umijs/babel-plugin-auto-css-modules" "3.4.25"
+    "@umijs/babel-plugin-import-to-await-require" "3.4.25"
+    "@umijs/babel-plugin-lock-core-js-3" "3.4.25"
+    "@umijs/babel-plugin-no-anonymous-default-export" "3.4.25"
 
 "@umijs/bundler-utils@3.2.27":
   version "3.2.27"
@@ -4876,6 +4863,17 @@
     prettier "2.1.1"
     set-value "3.0.2"
     tapable "1.1.3"
+
+"@umijs/deps@3.4.25":
+  version "3.4.25"
+  resolved "https://registry.yarnpkg.com/@umijs/deps/-/deps-3.4.25.tgz#ba7c01f60cf5af13462373c060c679f28687a6b2"
+  integrity sha512-lMZsuRKq9hlLEBZxTje/DHu2ONRr+OIpfV1gaqH/IwrDZ5W9n3fLp/7L1potKq8xLV4GacSWBy40HRrzsulNog==
+  dependencies:
+    "@bloomberg/record-tuple-polyfill" "0.0.3"
+    chokidar "3.5.1"
+    clipboardy "2.3.0"
+    jest-worker "24.9.0"
+    prettier "2.2.1"
 
 "@umijs/error-code-map@^1.0.1":
   version "1.0.1"
@@ -5303,6 +5301,13 @@
     signale "1.4.0"
     yargs "15.4.1"
     yargs-parser "18.1.3"
+
+"@umijs/utils@3.4.25":
+  version "3.4.25"
+  resolved "https://registry.yarnpkg.com/@umijs/utils/-/utils-3.4.25.tgz#47e4b76da92dd1e7e4b10301b873faf1e6706762"
+  integrity sha512-r/IiNRE7gM572Tp6JJgJ6KhioOdFWUL+1OQ51QdTah44CSzFbQTh/tjF6CWEErBzTVZ6O6W9P04XnmF8TCin4Q==
+  dependencies:
+    "@umijs/deps" "3.4.25"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -7099,6 +7104,21 @@ chokidar@3.4.2, chokidar@^3.0.2, chokidar@^3.4.1:
     readdirp "~3.4.0"
   optionalDependencies:
     fsevents "~2.1.2"
+
+chokidar@3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
+  integrity sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
+  dependencies:
+    anymatch "~3.1.1"
+    braces "~3.0.2"
+    glob-parent "~5.1.0"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.5.0"
+  optionalDependencies:
+    fsevents "~2.3.1"
 
 chokidar@^2.1.8:
   version "2.1.8"
@@ -10227,6 +10247,11 @@ fsevents@^2.1.2, fsevents@~2.1.2:
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.3.tgz#fb738703ae8d2f9fe900c33836ddebee8b97f23e"
   integrity sha512-Auw9a4AxqWpa9GUfj370BMPzzyncfBABW8Mab7BGWBYDj4Isgq+cDKtx0i6u9jcX9pQDnswsaaOTgTmA5pEjuQ==
 
+fsevents@~2.3.1:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+  integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
+
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
@@ -12288,7 +12313,7 @@ jest-watcher@^25.5.0:
     jest-util "^25.5.0"
     string-length "^3.1.0"
 
-jest-worker@^24.6.0, jest-worker@^24.9.0:
+jest-worker@24.9.0, jest-worker@^24.6.0, jest-worker@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-24.9.0.tgz#5dbfdb5b2d322e98567898238a9697bcce67b3e5"
   integrity sha512-51PE4haMSXcHohnSMdM42anbvZANYTqMrr52tVKPqqsPJMzoP6FYYDVqahX/HrAoKEKz3uUPzSvKs9A3qR4iVw==
@@ -15947,6 +15972,11 @@ prettier@2.2.0:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.0.tgz#8a03c7777883b29b37fb2c4348c66a78e980418b"
   integrity sha512-yYerpkvseM4iKD/BXLYUkQV5aKt4tQPqaGW6EsZjzyu0r7sVZZNPJW4Y8MyKmicp6t42XUPcBVA+H6sB3gqndw==
 
+prettier@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
+  integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
+
 prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
@@ -17399,6 +17429,13 @@ readdirp@~3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-3.4.0.tgz#9fdccdf9e9155805449221ac645e8303ab5b9ada"
   integrity sha512-0xe001vZBnJEK+uKcj8qOhyAKPzIT+gStxWr3LCB0DwcXR5NZJ3IaC+yGnHCYzB/S7ov3m3EEbZI2zeNvX+hGQ==
+  dependencies:
+    picomatch "^2.2.1"
+
+readdirp@~3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-3.5.0.tgz#9ba74c019b15d365278d2e91bb8c48d7b4d42c9e"
+  integrity sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==
   dependencies:
     picomatch "^2.2.1"
 
